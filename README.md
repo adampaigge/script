@@ -23,7 +23,7 @@ License
 
 Script is released under the terms of the Hippocratic license. See
 [LICENSE](LICENSE) for more information or see
-[https://firstdonoharm.dev/]((https://firstdonoharm.dev/).
+[https://firstdonoharm.dev/](https://firstdonoharm.dev/).
 
 This product includes software developed by the OpenSSL Project for use in the
 [OpenSSL Toolkit](https://www.openssl.org/), cryptographic software written by

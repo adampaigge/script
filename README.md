@@ -1,7 +1,7 @@
 Script
 =================
 
-The goal of Supernova Labs script is to bring together expertise over the past 10 years of crypto development to establish a new, extensible interface between humanity, machines and non-human intelligences. 
+The goal of Supernova Labs script is to bring together expertise over the past 17 years of crypto development to establish a new, extensible interface between humanity, machines and non-human intelligences. 
 
 Imagine a world in which the velocity of money and data is able to operate at its fastest. Money has only ever been the base layer of cryptocurrency, and it's ability to store and deploy smart contracts between parties both human and non-human, we believe, is it's ultimate purpose as a well resolved technology in our world.
 

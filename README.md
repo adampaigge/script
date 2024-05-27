@@ -33,7 +33,7 @@ Bernard.
 Development Process
 -------------------
 
-This Github repository contains the source code of releases. Feel free to contribute through Pull Request. We are looking for talented UTXO coin developers and people with prior experience in sCrypt (bitcoin smart contracting language). The underlying code is a blend of bitcoin & dogecoin yet greater than the sum of their parts. It should reflect the tried and tested mechanics of bitcoin with the fun and lightweight agility of doge. Please email [adam@supernovalabs.co.uk](copyURI:adam@supernovalabs.co.uk)
+This Github repository contains the source code of releases. Feel free to contribute through Pull Request. We are looking for talented UTXO coin developers and people with prior experience in sCrypt (bitcoin smart contracting language). The underlying code is a blend of bitcoin & dogecoin yet greater than the sum of their parts. It should reflect the tried and tested mechanics of bitcoin with the fun and lightweight agility of doge. Please email [adam@supernovalabs.co.uk](copy:adam@supernovalabs.co.uk)
 
 Disclosure Policy
 -----------------

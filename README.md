@@ -46,4 +46,4 @@ Further info
 
 See [doc/README.md](doc/README.md) for further info on installation, building, development, etc. We will try to make this as easy as possible for people but this will require some technical expertise and an ability to use a linux terminal. 
 
-Dont be afriad, we believe in you.
+Dont be afraid, we believe in you.

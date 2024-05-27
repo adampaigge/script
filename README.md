@@ -44,6 +44,6 @@ of security issues.
 Further info
 ------------
 
-See [doc/README.md](doc/README.md) for further info on installation, building, development, etc. We will try to make this as easy as possible for people but this will require some technical expertise and an ability to use a linux terminal. 
+See [doc/README.md](doc/README.md) for further info on installation, building, development, etc. We will try to make this as easy as possible for people but this will require some technical expertise and an ability to use a linux terminal. We owe a debt fo gratitude to Satoshi, the builders that sought to free the world, the cypherpunks and the cryptobros that got us all to where we are today. 
 
 Dont be afraid, we believe in you.

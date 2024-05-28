@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_MERKLE
-#define NOVO_MERKLE
+#ifndef SCRIPT_MERKLE
+#define SCRIPT_MERKLE
 
 #include <stdint.h>
 #include <vector>

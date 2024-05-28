@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Novo"
-            VALUE "FileDescription",    "novo-tx (CLI Novo transaction editor utility)"
+            VALUE "CompanyName",        "Script"
+            VALUE "FileDescription",    "script-tx (CLI Script transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "novo-tx"
+            VALUE "InternalName",       "script-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "novo-tx.exe"
-            VALUE "ProductName",        "novo-tx"
+            VALUE "OriginalFilename",   "script-tx.exe"
+            VALUE "ProductName",        "script-tx"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

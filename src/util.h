@@ -7,11 +7,11 @@
  * Server/client environment: argument handling, config file parsing,
  * logging, thread wrappers
  */
-#ifndef NOVO_UTIL_H
-#define NOVO_UTIL_H
+#ifndef SCRIPT_UTIL_H
+#define SCRIPT_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include "compat.h"
@@ -52,8 +52,8 @@ extern bool fLogIPs;
 extern std::atomic<bool> fReopenDebugLog;
 extern CTranslationInterface translationInterface;
 
-extern const char * const NOVO_CONF_FILENAME;
-extern const char * const NOVO_PID_FILENAME;
+extern const char * const SCRIPT_CONF_FILENAME;
+extern const char * const SCRIPT_PID_FILENAME;
 
 /**
  * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
@@ -210,7 +210,7 @@ void RenameThread(const char* name);
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("novo-%s", name);
+    std::string s = strprintf("script-%s", name);
     RenameThread(s.c_str());
     try
     {
@@ -235,4 +235,4 @@ template <typename Callable> void TraceThread(const char* name,  Callable func)
 
 std::string CopyrightHolders(const std::string& strPrefix);
 
-#endif // NOVO_UTIL_H
+#endif // SCRIPT_UTIL_H

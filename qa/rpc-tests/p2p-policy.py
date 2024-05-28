@@ -86,7 +86,7 @@ class P2PPolicyTests(BitcoinTestFramework):
     def setup_network(self):
         self.nodes = []
 
-        # a Novo node that behaves similar to mainnet policies
+        # a Script node that behaves similar to mainnet policies
         self.nodes.append(start_node(0, self.options.tmpdir, ["-debug", "-acceptnonstdtxn=0"]))
 
         # custom testnodes
@@ -111,7 +111,7 @@ class P2PPolicyTests(BitcoinTestFramework):
 
         relay_fee_per_byte = relay_fee / 1000
 
-        # create a bunch of UTXO with seed money from the Novo wallet
+        # create a bunch of UTXO with seed money from the Script wallet
         for i in range(10):
             inputs = [self.nodes[0].listunspent()[0]]
             outputs = { self.srcAddr : ten }
@@ -181,15 +181,15 @@ class P2PPolicyTests(BitcoinTestFramework):
 
         return tx
 
-    # spend seed money with a key not in the Novo wallet.
+    # spend seed money with a key not in the Script wallet.
     def spend_utxo(self, output):
-        # construct the transaction using Novo raw tx APIs
+        # construct the transaction using Script raw tx APIs
         input = [{ "txid": self.utxo.pop(), "vout": 0, "scriptPubKey": self.srcOutScript }]
         rawtx = self.nodes[0].createrawtransaction(input, output)
         signed_tx = self.nodes[0].signrawtransaction(rawtx, input, [self.srcPrivKey])
 
         # import the signed tx into a format the mininode client understands
-        # and send the tx from there rather than from Novo, to test
+        # and send the tx from there rather than from Script, to test
         # mempool acceptance as it would happen on mainnet: through relay
         tx = FromHex(CTransaction(), signed_tx['hex'])
         tx.rehash()

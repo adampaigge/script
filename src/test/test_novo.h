@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_TEST_TEST_NOVO_H
-#define NOVO_TEST_TEST_NOVO_H
+#ifndef SCRIPT_TEST_TEST_SCRIPT_H
+#define SCRIPT_TEST_TEST_SCRIPT_H
 
 #include "chainparamsbase.h"
 #include "key.h"

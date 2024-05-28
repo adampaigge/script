@@ -5,8 +5,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef NOVO_TORCONTROL_H
-#define NOVO_TORCONTROL_H
+#ifndef SCRIPT_TORCONTROL_H
+#define SCRIPT_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -17,4 +17,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif /* NOVO_TORCONTROL_H */
+#endif /* SCRIPT_TORCONTROL_H */

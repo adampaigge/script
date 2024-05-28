@@ -56,7 +56,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, UniValue& out, bool fInclud
 
     UniValue a(UniValue::VARR);
     BOOST_FOREACH(const CTxDestination& addr, addresses)
-        a.push_back(CNovoAddress(addr).ToString());
+        a.push_back(CScriptAddress(addr).ToString());
     out.pushKV("addresses", a);
 }
 
@@ -182,7 +182,7 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"address\"        (string) novo address\n"
+            "           \"address\"        (string) script address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"
@@ -225,7 +225,7 @@ UniValue getrawtransaction(const JSONRPCRequest& request)
 
     CTransactionRef tx;
     uint256 hashBlock;
-    // Novo: Is this the best value for consensus height?
+    // Script: Is this the best value for consensus height?
     if (!GetTransaction(hash, tx, Params().GetConsensus(), hashBlock, true))
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string(fTxIndex ? "No such mempool or blockchain transaction"
             : "No such mempool transaction. Use -txindex to enable blockchain transaction queries") +
@@ -379,8 +379,8 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
             "     ]\n"
             "2. \"outputs\"               (object, required) a json object with outputs\n"
             "    {\n"
-            "      \"address\": x.xxx,    (numeric or string, required) The key is the novo address, the numeric value (can be string) is the " + CURRENCY_UNIT + " amount\n"
-            "      \"address\": {         (or object, required) The key is the novo address,  the json object value is contract output\n"
+            "      \"address\": x.xxx,    (numeric or string, required) The key is the script address, the numeric value (can be string) is the " + CURRENCY_UNIT + " amount\n"
+            "      \"address\": {         (or object, required) The key is the script address,  the json object value is contract output\n"
             "         \"contractType\" : \"FT\",          (string, required) The contract type\n"
             "         \"contractID\" : \"id:vout\",       (string, required) The contract id\n"
             "         \"contractValueHex\" : \"hex\",     (string, required) The hex encoded contract value\n"
@@ -450,7 +450,7 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
         rawTx.vin.push_back(in);
     }
 
-    set<CNovoAddress> setAddress;
+    set<CScriptAddress> setAddress;
     vector<string> addrList = sendTo.getKeys();
     BOOST_FOREACH(const string& name_, addrList) {
 
@@ -460,9 +460,9 @@ UniValue createrawtransaction(const JSONRPCRequest& request)
             CTxOut out(0, CScript() << OP_FALSE << OP_RETURN << data);
             rawTx.vout.push_back(out);
         } else {
-            CNovoAddress address(name_);
+            CScriptAddress address(name_);
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid Novo address: ")+name_);
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid Script address: ")+name_);
 
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ")+name_);
@@ -547,7 +547,7 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc\"   (string) novo address\n"
+            "           \"12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc\"   (string) script address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"
@@ -590,7 +590,7 @@ UniValue decodescript(const JSONRPCRequest& request)
             "  \"type\":\"type\", (string) The output type\n"
             "  \"reqSigs\": n,    (numeric) The required signatures\n"
             "  \"addresses\": [   (json array of string)\n"
-            "     \"address\"     (string) novo address\n"
+            "     \"address\"     (string) script address\n"
             "     ,...\n"
             "  ],\n"
             "  \"p2sh\",\"address\" (string) address of P2SH script wrapping this redeem script (not returned if the script is already a P2SH).\n"
@@ -618,7 +618,7 @@ UniValue decodescript(const JSONRPCRequest& request)
     if (type.isStr() && type.get_str() != "scripthash") {
         // P2SH cannot be wrapped in a P2SH. If this script is already a P2SH,
         // don't return the address for a P2SH of the P2SH.
-        r.pushKV("p2sh", CNovoAddress(CScriptID(script)).ToString());
+        r.pushKV("p2sh", CScriptAddress(CScriptID(script)).ToString());
     }
 
     return r;
@@ -750,7 +750,7 @@ UniValue signrawtransaction(const JSONRPCRequest& request)
         UniValue keys = request.params[2].get_array();
         for (unsigned int idx = 0; idx < keys.size(); idx++) {
             UniValue k = keys[idx];
-            CNovoSecret vchSecret;
+            CScriptSecret vchSecret;
             bool fGood = vchSecret.SetString(k.get_str());
             if (!fGood)
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");

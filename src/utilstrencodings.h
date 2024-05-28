@@ -6,8 +6,8 @@
 /**
  * Utilities for converting data from/to strings.
  */
-#ifndef NOVO_UTILSTRENCODINGS_H
-#define NOVO_UTILSTRENCODINGS_H
+#ifndef SCRIPT_UTILSTRENCODINGS_H
+#define SCRIPT_UTILSTRENCODINGS_H
 
 #include <stdint.h>
 #include <string>
@@ -145,4 +145,4 @@ bool TimingResistantEqual(const T& a, const T& b)
  */
 bool ParseFixedPoint(const std::string &val, int decimals, int64_t *amount_out);
 
-#endif // NOVO_UTILSTRENCODINGS_H
+#endif // SCRIPT_UTILSTRENCODINGS_H

@@ -4,7 +4,7 @@
 
 #include "test/test_random.h"
 #include "utilstrencodings.h"
-#include "test/test_novo.h"
+#include "test/test_script.h"
 #include "wallet/crypter.h"
 
 #include <vector>

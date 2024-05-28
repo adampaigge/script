@@ -1,8 +1,8 @@
-# Release Notes for Novo version 0.1.2
+# Release Notes for Script version 0.1.2
 
-Novo version 0.1.2 is now available from:
+Script version 0.1.2 is now available from:
 
-  <https://novonode.org>
+  <https://scriptnode.org>
 
 This is a minor patch for v0.1.0. It mainly contains changes listed below:
 

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_INIT_H
-#define NOVO_INIT_H
+#ifndef SCRIPT_INIT_H
+#define SCRIPT_INIT_H
 
 #include <string>
 
@@ -26,7 +26,7 @@ void InitLogging();
 //!Parameter interaction: change current parameters depending on various rules
 void InitParameterInteraction();
 
-/** Initialize novo: Basic context setup.
+/** Initialize script: Basic context setup.
  *  @note This can be done before daemonization.
  *  @pre Parameters should be parsed and config file should be read.
  */
@@ -44,7 +44,7 @@ bool AppInitParameterInteraction();
  */
 bool AppInitSanityChecks();
 /**
- * Novo main initialization.
+ * Script main initialization.
  * @note This should only be done after daemonization.
  * @pre Parameters should be parsed and config file should be read, AppInitSanityChecks should have been called.
  */
@@ -52,8 +52,8 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler);
 
 /** The help message mode determines what help message to show */
 enum HelpMessageMode {
-    HMM_NOVOD,
-    HMM_NOVO_QT
+    HMM_SCRIPTD,
+    HMM_SCRIPT_QT
 };
 
 /** Help for options shared between UI and daemon (for -help) */
@@ -61,4 +61,4 @@ std::string HelpMessage(HelpMessageMode mode);
 /** Returns licensing information (for -version) */
 std::string LicenseInfo();
 
-#endif // NOVO_INIT_H
+#endif // SCRIPT_INIT_H

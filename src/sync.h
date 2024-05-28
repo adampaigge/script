@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SYNC_H
-#define NOVO_SYNC_H
+#ifndef SCRIPT_SYNC_H
+#define SCRIPT_SYNC_H
 
 #include "threadsafety.h"
 
@@ -288,4 +288,4 @@ public:
     }
 };
 
-#endif // NOVO_SYNC_H
+#endif // SCRIPT_SYNC_H

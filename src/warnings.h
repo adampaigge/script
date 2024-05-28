@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_WARNINGS_H
-#define NOVO_WARNINGS_H
+#ifndef SCRIPT_WARNINGS_H
+#define SCRIPT_WARNINGS_H
 
 #include <stdlib.h>
 #include <string>
@@ -18,4 +18,4 @@ std::string GetWarnings(const std::string& strFor);
 
 static const bool DEFAULT_TESTSAFEMODE = false;
 
-#endif //  NOVO_WARNINGS_H
+#endif //  SCRIPT_WARNINGS_H

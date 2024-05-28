@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SUPPORT_LOCKEDPOOL_H
-#define NOVO_SUPPORT_LOCKEDPOOL_H
+#ifndef SCRIPT_SUPPORT_LOCKEDPOOL_H
+#define SCRIPT_SUPPORT_LOCKEDPOOL_H
 
 #include <stdint.h>
 #include <list>
@@ -228,4 +228,4 @@ private:
     static std::once_flag init_flag;
 };
 
-#endif // NOVO_SUPPORT_LOCKEDPOOL_H
+#endif // SCRIPT_SUPPORT_LOCKEDPOOL_H

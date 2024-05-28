@@ -1,0 +1,10 @@
+#!/bin/bash
+
+(( $# != 2 )) && exit 1
+
+for f in *; do
+  newf="${f//$1/$2}"
+  if [[ $f != $newf ]]; then
+    mv "$f" "$newf"
+  fi
+done

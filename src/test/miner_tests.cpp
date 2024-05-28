@@ -17,7 +17,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include "test/test_novo.h"
+#include "test/test_script.h"
 
 #include <memory>
 
@@ -148,7 +148,7 @@ void TestPackageSelection(const CChainParams& chainparams, CScript scriptPubKey,
     tx.vin[0].prevout.hash = txFirst[2]->GetHash();
     tx.vout.resize(2);
     tx.vout[0].nValue = 5000000000LL - 100000000;
-    tx.vout[1].nValue = 100000000; // 10000 NOVO output
+    tx.vout[1].nValue = 100000000; // 10000 SCRIPT output
     uint256 hashFreeTx2 = tx.GetHash();
     mempool.addUnchecked(hashFreeTx2, entry.Fee(0).SpendsCoinbase(true).FromTx(tx));
 
@@ -184,7 +184,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
 
     CScript scriptPubKeyPadding = CScript() << 0x11de784a << OP_DROP;
 
-    // changed this to novo genesis pubkey script
+    // changed this to script genesis pubkey script
     CScript scriptPubKey = CScript() << OP_DUP
                                      << OP_HASH160
                                      << ParseHex("0567b5f0544536d023fbb123b830f626d9c80389")
@@ -472,7 +472,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
     SetMockTime(0);
     mempool.clear();
 
-    // Novo: Package selection doesn't work that way because our fees are fundamentally
+    // Script: Package selection doesn't work that way because our fees are fundamentally
     //           different. Need to rationalise in a later release.
     // TestPackageSelection(chainparams, scriptPubKey, txFirst);
 

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_CRYPTO_SHA512_H
-#define NOVO_CRYPTO_SHA512_H
+#ifndef SCRIPT_CRYPTO_SHA512_H
+#define SCRIPT_CRYPTO_SHA512_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -25,4 +25,4 @@ public:
     CSHA512& Reset();
 };
 
-#endif // NOVO_CRYPTO_SHA512_H
+#endif // SCRIPT_CRYPTO_SHA512_H

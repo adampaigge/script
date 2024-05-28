@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_VALIDATION_H
-#define NOVO_VALIDATION_H
+#ifndef SCRIPT_VALIDATION_H
+#define SCRIPT_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include "amount.h"
@@ -542,4 +542,4 @@ void DumpMempool();
 /** Load the mempool from disk. */
 bool LoadMempool();
 
-#endif // NOVO_VALIDATION_H
+#endif // SCRIPT_VALIDATION_H

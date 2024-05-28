@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_NETBASE_H
-#define NOVO_NETBASE_H
+#ifndef SCRIPT_NETBASE_H
+#define SCRIPT_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include "compat.h"
@@ -65,4 +65,4 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
 struct timeval MillisToTimeval(int64_t nTimeout);
 void InterruptSocks5(bool interrupt);
 
-#endif // NOVO_NETBASE_H
+#endif // SCRIPT_NETBASE_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SUPPORT_EVENTS_H
-#define NOVO_SUPPORT_EVENTS_H
+#ifndef SCRIPT_SUPPORT_EVENTS_H
+#define SCRIPT_SUPPORT_EVENTS_H
 
 #include <ios>
 #include <memory>
@@ -53,4 +53,4 @@ raii_evhttp_connection obtain_evhttp_connection_base(struct event_base* base, st
     return result;
 }
 
-#endif // NOVO_SUPPORT_EVENTS_H
+#endif // SCRIPT_SUPPORT_EVENTS_H

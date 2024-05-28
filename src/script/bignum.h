@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_BIGNUM_H
-#define NOVO_BIGNUM_H
+#ifndef SCRIPT_BIGNUM_H
+#define SCRIPT_BIGNUM_H
 
 #include "serialize.h"
 #include "uint256.h"

@@ -1,16 +1,16 @@
-# Release Notes for Novo version 0.2.0
+# Release Notes for Script version 0.2.0
 
-Novo version 0.2.0 is now available from:
+Script version 0.2.0 is now available from:
 
-  <https://novonode.org>
+  <https://scriptnode.org>
 
-To ensure everything is MIT licensed, the newly re-opened Novo source code repository is entirely re-written based on a variation of Dogecoin.
+To ensure everything is MIT licensed, the newly re-opened Script source code repository is entirely re-written based on a variation of Dogecoin.
 
 It mainly contains changes listed below:
 
 1. Opcode being compatible with v0.1.2
-2. Dust is now a fixed value (0.4368 Novo)
-3. FeeRate is set to 0.8 Novo/KB, consistent with v0.1.2.
+2. Dust is now a fixed value (0.4368 Script)
+3. FeeRate is set to 0.8 Script/KB, consistent with v0.1.2.
 4. RPC is modified and basically compatible with v0.1.2.
 5. GUI is removed.
 6. Alert system is removed.

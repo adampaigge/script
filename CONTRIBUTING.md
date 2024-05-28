@@ -1,22 +1,22 @@
-# Contributing to Novo
+# Contributing to Script
 
-Dogecoin Core is open source software, and we would welcome contributions
+Script Core is open source software, and we would welcome contributions
 which improve the state of the software. For those wanting to discuss changes,
 or look for work that needs doing, please see:
 
-* [Help requests](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
-* [Projects](https://github.com/dogecoin/dogecoin/projects)
-* [Dogecoindev on reddit](https://www.reddit.com/r/dogecoindev/)
+* [Help requests](https://github.com/adampaiggescript/labels/help%20wanted)
+* [Projects](https://github.com/adampaigge/script/projects)
+* [Scriptdev on reddit](https://www.reddit.com/r/supernovaslabs/)
 
 ## Branch Strategy
 
-Dogecoin Core's default branch is intentionally a stable release, so that anyone
+Script Core's default branch is intentionally a stable release, so that anyone
 downloading the code and compiling it gets a stable release. Active development
 occurs on branches named after the version they are targeting, for example the
 1.14.4 branch is named `1.14.4-dev`. When raising PRs, please raise against the
 relevant development branch and **not** against the `master` branch.
 
-## Contributor Workflow
+## Contributor Workflow 
 
 The codebase is maintained using the "contributor workflow" where everyone
 without exception contributes patch proposals using "pull requests". This
@@ -102,35 +102,35 @@ in the future, they may be removed.
 
 ### Refactoring
 
-Dogecoin Core is a direct fork of Bitcoin Core and therefore benefits from as
+Script Core is a direct fork of Script which follows from Dogecoin and Bitcoin Coreand therefore benefits from as
 little refactoring as possible on code that is created upstream. If you see any
 structural issues with upstream code, please propose these fixes for
-[bitcoin/bitcoin](https://github.com/bitcoin/bitcoin) and future Dogecoin Core
+[bitcoin/bitcoin](https://github.com/bitcoin/bitcoin) and future Script Core
 releases will automatically benefit from these.
 
-When refactoring Dogecoin-specific code, please keep refactoring requests short,
+When refactoring Script-specific code, please keep refactoring requests short,
 low complexity and easy to verify.
 
 
 ## "Decision Making" Process
 
-The following applies to code changes to Dogecoin Core, and is not to be
-confused with overall Dogecoin Network Protocol consensus changes. All consensus
+The following applies to code changes to Script Core, and is not to be
+confused with overall Script Network Protocol consensus changes. All consensus
 changes **must** be ratified by miners; a proposal to implement protocol changes
 does not guarantee activation on the mainnet, not even when a binary gets
 released by maintainers.
 
-Whether a pull request is merged into Dogecoin Core rests with the repository
+Whether a pull request is merged into Script Core rests with the repository
 maintainers.
 
 Maintainers will take into consideration if a patch is in line with the general
-principles of Dogecoin; meets the minimum standards for inclusion; and will
+principles of Script; meets the minimum standards for inclusion; and will
 take into account the consensus among frequent contributors.
 
 In general, all pull requests must:
 
   - have a clear use case, fix a demonstrable bug or serve the greater good of
-    Dogecoin;
+    Script;
   - be peer reviewed;
   - have unit tests and functional tests;
   - follow code style guidelines;
@@ -160,11 +160,11 @@ there is consensus to merge a pull request.
 
 Maintainers reserve the right to weigh the opinions of peer reviewers
 using common sense judgement and also may weight based on meritocracy: Those
-that have demonstrated a deeper commitment and understanding towards Dogecoin
+that have demonstrated a deeper commitment and understanding towards Script
 (over time) or have clear domain expertise may naturally have more weight, as
 one would expect in all walks of life.
 
-Where a patch set proposes to change the Dogecoin consensus, it must have been
+Where a patch set proposes to change the Script consensus, it must have been
 discussed extensively, be accompanied by widely discussed documentation and have
 a generally widely perceived technical consensus of being a worthwhile change,
 based on the judgement of the maintainers.
@@ -172,6 +172,6 @@ based on the judgement of the maintainers.
 ## Copyright
 
 By contributing to this repository, you agree to license your work under the 
-MIT license unless specified otherwise in `contrib/debian/copyright` or at 
+Hippocratic license unless specified otherwise in `contrib/debian/copyright` or at 
 the top of the file itself. Any work contributed where you are not the original 
 author must contain its license header with the original author(s) and source.

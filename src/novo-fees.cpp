@@ -10,7 +10,7 @@
 #include "txmempool.h"
 #include "util.h"
 #include "validation.h"
-#include "novo-fees.h"
+#include "script-fees.h"
 #include "amount.h"
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
@@ -18,12 +18,12 @@
 
 #ifdef ENABLE_WALLET
 
-CFeeRate GetNovoFeeRate(int priority)
+CFeeRate GetScriptFeeRate(int priority)
 {
     switch(priority)
     {
     case SUCH_EXPENSIVE:
-        return CFeeRate(COIN * 521); // 521 NOVO
+        return CFeeRate(COIN * 521); // 521 SCRIPT
     case MANY_GENEROUS:
         return CFeeRate(CWallet::minTxFee.GetFeePerK() * 100);
     case AMAZE:
@@ -39,7 +39,7 @@ CFeeRate GetNovoFeeRate(int priority)
     return CWallet::minTxFee;
 }
 
-const std::string GetNovoPriorityLabel(int priority)
+const std::string GetScriptPriorityLabel(int priority)
 {
     switch(priority)
     {
@@ -63,7 +63,7 @@ const std::string GetNovoPriorityLabel(int priority)
 
 #endif
 
-CAmount GetNovoMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree)
+CAmount GetScriptMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree)
 {
     {
         LOCK(mempool.cs);
@@ -76,7 +76,7 @@ CAmount GetNovoMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAl
     }
 
     CAmount nMinFee = ::minRelayTxFeeRate.GetFee(nBytes);
-    nMinFee += GetNovoDustFee(tx.vout, nDustLimit);
+    nMinFee += GetScriptDustFee(tx.vout, nDustLimit);
 
     if (fAllowFree)
     {
@@ -93,7 +93,7 @@ CAmount GetNovoMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAl
     return nMinFee;
 }
 
-CAmount GetNovoDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit) {
+CAmount GetScriptDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit) {
     CAmount nFee = 0;
 
     // To limit dust spam, add the dust limit for each output

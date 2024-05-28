@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SCRIPT_SCRIPT_H
-#define NOVO_SCRIPT_SCRIPT_H
+#ifndef SCRIPT_SCRIPT_SCRIPT_H
+#define SCRIPT_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -664,4 +664,4 @@ public:
     virtual ~CReserveScript() {}
 };
 
-#endif // NOVO_SCRIPT_SCRIPT_H
+#endif // SCRIPT_SCRIPT_SCRIPT_H

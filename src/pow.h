@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_POW_H
-#define NOVO_POW_H
+#ifndef SCRIPT_POW_H
+#define SCRIPT_POW_H
 
 #include "consensus/params.h"
 #include "arith_uint256.h"
@@ -35,4 +35,4 @@ uint32_t GetNextASERTWorkRequired(const CBlockIndex *pindexPrev,
                                   const CBlockHeader *pblock,
                                   const Consensus::Params &params) noexcept;
 
-#endif // NOVO_POW_H
+#endif // SCRIPT_POW_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_DBWRAPPER_H
-#define NOVO_DBWRAPPER_H
+#ifndef SCRIPT_DBWRAPPER_H
+#define SCRIPT_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -288,4 +288,4 @@ public:
     bool IsEmpty();
 };
 
-#endif // NOVO_DBWRAPPER_H
+#endif // SCRIPT_DBWRAPPER_H

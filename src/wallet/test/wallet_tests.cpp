@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "rpc/server.h"
-#include "test/test_novo.h"
+#include "test/test_script.h"
 #include "validation.h"
 #include "wallet/test/wallet_test_fixture.h"
 

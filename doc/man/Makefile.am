@@ -1,9 +1,9 @@
 dist_man1_MANS=
 
-if BUILD_NOVOD
-  dist_man1_MANS+=novod.1
+if BUILD_SCRIPTD
+  dist_man1_MANS+=scriptd.1
 endif
 
-if BUILD_NOVO_UTILS
-  dist_man1_MANS+=novo-cli.1 novo-tx.1
+if BUILD_SCRIPT_UTILS
+  dist_man1_MANS+=script-cli.1 script-tx.1
 endif

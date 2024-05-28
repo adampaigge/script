@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Novo"
-            VALUE "FileDescription",    "novo-cli (JSON-RPC client for " PACKAGE_NAME ")"
+            VALUE "CompanyName",        "Script"
+            VALUE "FileDescription",    "script-cli (JSON-RPC client for " PACKAGE_NAME ")"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "novo-cli"
+            VALUE "InternalName",       "script-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "novo-cli.exe"
-            VALUE "ProductName",        "novo-cli"
+            VALUE "OriginalFilename",   "script-cli.exe"
+            VALUE "ProductName",        "script-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

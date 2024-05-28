@@ -11,8 +11,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef NOVO_BASE58_H
-#define NOVO_BASE58_H
+#ifndef SCRIPT_BASE58_H
+#define SCRIPT_BASE58_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -101,7 +101,7 @@ public:
  * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CNovoAddress : public CBase58Data {
+class CScriptAddress : public CBase58Data {
 public:
     bool Set(const CKeyID &id);
     bool Set(const CScriptID &id);
@@ -109,10 +109,10 @@ public:
     bool IsValid() const;
     bool IsValid(const CChainParams &params) const;
 
-    CNovoAddress() {}
-    CNovoAddress(const CTxDestination &dest) { Set(dest); }
-    CNovoAddress(const std::string& strAddress) { SetString(strAddress); }
-    CNovoAddress(const char* pszAddress) { SetString(pszAddress); }
+    CScriptAddress() {}
+    CScriptAddress(const CTxDestination &dest) { Set(dest); }
+    CScriptAddress(const std::string& strAddress) { SetString(strAddress); }
+    CScriptAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID &keyID) const;
@@ -122,7 +122,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CNovoSecret : public CBase58Data
+class CScriptSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -131,11 +131,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CNovoSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CNovoSecret() {}
+    CScriptSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CScriptSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CNovoExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CScriptExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -153,18 +153,18 @@ public:
         return ret;
     }
 
-    CNovoExtKeyBase(const K &key) {
+    CScriptExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CNovoExtKeyBase(const std::string& strBase58c) {
+    CScriptExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CNovoExtKeyBase() {}
+    CScriptExtKeyBase() {}
 };
 
-typedef CNovoExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CNovoExtKey;
-typedef CNovoExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CNovoExtPubKey;
+typedef CScriptExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CScriptExtKey;
+typedef CScriptExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CScriptExtPubKey;
 
-#endif // NOVO_BASE58_H
+#endif // SCRIPT_BASE58_H

@@ -4,8 +4,8 @@
 //
 // C++ wrapper around ctaes, a constant-time AES implementation
 
-#ifndef NOVO_CRYPTO_AES_H
-#define NOVO_CRYPTO_AES_H
+#ifndef SCRIPT_CRYPTO_AES_H
+#define SCRIPT_CRYPTO_AES_H
 
 extern "C" {
 #include "crypto/ctaes/ctaes.h"
@@ -115,4 +115,4 @@ private:
     unsigned char iv[AES_BLOCKSIZE];
 };
 
-#endif // NOVO_CRYPTO_AES_H
+#endif // SCRIPT_CRYPTO_AES_H

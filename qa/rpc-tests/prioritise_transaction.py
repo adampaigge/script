@@ -33,7 +33,7 @@ class PrioritiseTransactionTest(BitcoinTestFramework):
     def run_test(self):
         utxo_count = 90
         utxos = create_confirmed_utxos(self.relayfee, self.nodes[0], utxo_count)
-        # Note Novo 1.14.5 wallet fee is 10x relay fee
+        # Note Script 1.14.5 wallet fee is 10x relay fee
         base_fee = self.relayfee*100 * 10# our transactions are smaller than 100kb
         txids = []
 

@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_WALLET_COINCONTROL_H
-#define NOVO_WALLET_COINCONTROL_H
+#ifndef SCRIPT_WALLET_COINCONTROL_H
+#define SCRIPT_WALLET_COINCONTROL_H
 
 #include "primitives/transaction.h"
-#include "novo-fees.h"
+#include "script-fees.h"
 
 /** Coin Control Features. */
 class CCoinControl
@@ -77,4 +77,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // NOVO_WALLET_COINCONTROL_H
+#endif // SCRIPT_WALLET_COINCONTROL_H

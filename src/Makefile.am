@@ -18,28 +18,28 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-NOVO_CONFIG_INCLUDES=-I$(builddir)/config
-NOVO_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+SCRIPT_CONFIG_INCLUDES=-I$(builddir)/config
+SCRIPT_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-NOVO_INCLUDES += -I$(srcdir)/secp256k1/include
-NOVO_INCLUDES += $(UNIVALUE_CFLAGS)
+SCRIPT_INCLUDES += -I$(srcdir)/secp256k1/include
+SCRIPT_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBNOVO_SERVER=libnovo_server.a
-LIBNOVO_COMMON=libnovo_common.a
-LIBNOVO_CONSENSUS=libnovo_consensus.a
-LIBNOVO_CLI=libnovo_cli.a
-LIBNOVO_UTIL=libnovo_util.a
-LIBNOVO_CRYPTO=crypto/libnovo_crypto.a
+LIBSCRIPT_SERVER=libscript_server.a
+LIBSCRIPT_COMMON=libscript_common.a
+LIBSCRIPT_CONSENSUS=libscript_consensus.a
+LIBSCRIPT_CLI=libscript_cli.a
+LIBSCRIPT_UTIL=libscript_util.a
+LIBSCRIPT_CRYPTO=crypto/libscript_crypto.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBNOVO_ZMQ=libnovo_zmq.a
+LIBSCRIPT_ZMQ=libscript_zmq.a
 endif
-if BUILD_NOVO_LIBS
-LIBNOVOCONSENSUS=libnovoconsensus.la
+if BUILD_SCRIPT_LIBS
+LIBSCRIPTCONSENSUS=libscriptconsensus.la
 endif
 if ENABLE_WALLET
-LIBNOVO_WALLET=libnovo_wallet.a
+LIBSCRIPT_WALLET=libscript_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -48,33 +48,33 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBNOVO_CRYPTO) \
-  $(LIBNOVO_UTIL) \
-  $(LIBNOVO_COMMON) \
-  $(LIBNOVO_CONSENSUS) \
-  $(LIBNOVO_SERVER) \
-  $(LIBNOVO_CLI) \
-  $(LIBNOVO_WALLET) \
-  $(LIBNOVO_ZMQ)
+  $(LIBSCRIPT_CRYPTO) \
+  $(LIBSCRIPT_UTIL) \
+  $(LIBSCRIPT_COMMON) \
+  $(LIBSCRIPT_CONSENSUS) \
+  $(LIBSCRIPT_SERVER) \
+  $(LIBSCRIPT_CLI) \
+  $(LIBSCRIPT_WALLET) \
+  $(LIBSCRIPT_ZMQ)
 
-lib_LTLIBRARIES = $(LIBNOVOCONSENSUS)
+lib_LTLIBRARIES = $(LIBSCRIPTCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_NOVOD
-  bin_PROGRAMS += novod
+if BUILD_SCRIPTD
+  bin_PROGRAMS += scriptd
 endif
 
-if BUILD_NOVO_UTILS
-  bin_PROGRAMS += novo-cli novo-tx
+if BUILD_SCRIPT_UTILS
+  bin_PROGRAMS += script-cli script-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# novo core #
-NOVO_CORE_H = \
+# script core #
+SCRIPT_CORE_H = \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -97,8 +97,8 @@ NOVO_CORE_H = \
   core_io.h \
   core_memusage.h \
   cuckoocache.h \
-  novo-fees.cpp \
-  novo-fees.h \
+  script-fees.cpp \
+  script-fees.h \
   httprpc.h \
   httpserver.h \
   indirectmap.h \
@@ -170,12 +170,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libnovo_util_a-clientversion.$(OBJEXT): obj/build.h
+libscript_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between novod and novo-qt
-libnovo_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libnovo_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_server_a_SOURCES = \
+# server: shared between scriptd and script-qt
+libscript_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libscript_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_server_a_SOURCES = \
   addrman.cpp \
   addrdb.cpp \
   bloom.cpp \
@@ -211,23 +211,23 @@ libnovo_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(NOVO_CORE_H)
+  $(SCRIPT_CORE_H)
 
 if ENABLE_ZMQ
-libnovo_zmq_a_CPPFLAGS = $(NOVO_INCLUDES) $(ZMQ_CFLAGS)
-libnovo_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_zmq_a_SOURCES = \
+libscript_zmq_a_CPPFLAGS = $(SCRIPT_INCLUDES) $(ZMQ_CFLAGS)
+libscript_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between novod and novo-qt, but only linked
+# wallet: shared between scriptd and script-qt, but only linked
 # when wallet enabled
-libnovo_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-libnovo_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_wallet_a_SOURCES = \
+libscript_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+libscript_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_wallet_a_SOURCES = \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/rpcdump.cpp \
@@ -235,12 +235,12 @@ libnovo_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
   policy/rbf.cpp \
-  $(NOVO_CORE_H)
+  $(SCRIPT_CORE_H)
 
 # crypto primitives library
-crypto_libnovo_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_CONFIG_INCLUDES)
-crypto_libnovo_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libnovo_crypto_a_SOURCES = \
+crypto_libscript_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_CONFIG_INCLUDES)
+crypto_libscript_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libscript_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/common.h \
@@ -258,9 +258,9 @@ crypto_libnovo_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libnovo_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-libnovo_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_consensus_a_SOURCES = \
+libscript_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+libscript_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -277,7 +277,7 @@ libnovo_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/novoconsensus.cpp \
+  script/scriptconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -292,10 +292,10 @@ libnovo_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between novod, and novo-qt and non-server tools
-libnovo_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-libnovo_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_common_a_SOURCES = \
+# common: shared between scriptd, and script-qt and non-server tools
+libscript_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+libscript_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   chainparams.cpp \
@@ -312,14 +312,14 @@ libnovo_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(NOVO_CORE_H)
+  $(SCRIPT_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libnovo_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-libnovo_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_util_a_SOURCES = \
+libscript_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+libscript_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -335,103 +335,103 @@ libnovo_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(NOVO_CORE_H)
+  $(SCRIPT_CORE_H)
 
 if GLIBC_BACK_COMPAT
 
-libnovo_util_a_SOURCES += compat/glibc_compat.cpp
+libscript_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 
 endif
 
-# cli: shared between novo-cli and novo-qt
-libnovo_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-libnovo_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libnovo_cli_a_SOURCES = \
+# cli: shared between script-cli and script-qt
+libscript_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+libscript_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscript_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(NOVO_CORE_H)
+  $(SCRIPT_CORE_H)
 
-nodist_libnovo_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libscript_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# novod binary #
-novod_SOURCES = novod.cpp
-novod_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-novod_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-novod_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# scriptd binary #
+scriptd_SOURCES = scriptd.cpp
+scriptd_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+scriptd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scriptd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-novod_SOURCES += novod-res.rc
+scriptd_SOURCES += scriptd-res.rc
 endif
 
-novod_LDADD = \
-  $(LIBNOVO_SERVER) \
-  $(LIBNOVO_COMMON) \
+scriptd_LDADD = \
+  $(LIBSCRIPT_SERVER) \
+  $(LIBSCRIPT_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBNOVO_UTIL) \
-  $(LIBNOVO_WALLET) \
-  $(LIBNOVO_ZMQ) \
-  $(LIBNOVO_CONSENSUS) \
-  $(LIBNOVO_CRYPTO) \
+  $(LIBSCRIPT_UTIL) \
+  $(LIBSCRIPT_WALLET) \
+  $(LIBSCRIPT_ZMQ) \
+  $(LIBSCRIPT_CONSENSUS) \
+  $(LIBSCRIPT_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-novod_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+scriptd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# novo-cli binary #
-novo_cli_SOURCES = novo-cli.cpp
-novo_cli_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES) $(EVENT_CFLAGS)
-novo_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-novo_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# script-cli binary #
+script_cli_SOURCES = script-cli.cpp
+script_cli_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES) $(EVENT_CFLAGS)
+script_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+script_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-novo_cli_SOURCES += novo-cli-res.rc
+script_cli_SOURCES += script-cli-res.rc
 endif
 
-novo_cli_LDADD = \
-  $(LIBNOVO_CLI) \
+script_cli_LDADD = \
+  $(LIBSCRIPT_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBNOVO_UTIL) \
-  $(LIBNOVO_CRYPTO)
+  $(LIBSCRIPT_UTIL) \
+  $(LIBSCRIPT_CRYPTO)
 
-novo_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+script_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# novo-tx binary #
-novo_tx_SOURCES = novo-tx.cpp
-novo_tx_CPPFLAGS = $(AM_CPPFLAGS) $(NOVO_INCLUDES)
-novo_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-novo_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# script-tx binary #
+script_tx_SOURCES = script-tx.cpp
+script_tx_CPPFLAGS = $(AM_CPPFLAGS) $(SCRIPT_INCLUDES)
+script_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+script_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-novo_tx_SOURCES += novo-tx-res.rc
+script_tx_SOURCES += script-tx-res.rc
 endif
 
-novo_tx_LDADD = \
+script_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBNOVO_COMMON) \
-  $(LIBNOVO_UTIL) \
-  $(LIBNOVO_CONSENSUS) \
-  $(LIBNOVO_CRYPTO) \
+  $(LIBSCRIPT_COMMON) \
+  $(LIBSCRIPT_UTIL) \
+  $(LIBSCRIPT_CONSENSUS) \
+  $(LIBSCRIPT_CRYPTO) \
   $(LIBSECP256K1)
 
-novo_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+script_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# novoconsensus library #
-if BUILD_NOVO_LIBS
-include_HEADERS = script/novoconsensus.h
-libnovoconsensus_la_SOURCES = $(crypto_libnovo_crypto_a_SOURCES) $(libnovo_consensus_a_SOURCES)
+# scriptconsensus library #
+if BUILD_SCRIPT_LIBS
+include_HEADERS = script/scriptconsensus.h
+libscriptconsensus_la_SOURCES = $(crypto_libscript_crypto_a_SOURCES) $(libscript_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libnovoconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libscriptconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libnovoconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libnovoconsensus_la_LIBADD = $(LIBSECP256K1)
-libnovoconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_NOVO_INTERNAL
-libnovoconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libscriptconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libscriptconsensus_la_LIBADD = $(LIBSECP256K1)
+libscriptconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_SCRIPT_INTERNAL
+libscriptconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -462,12 +462,12 @@ DISTCLEANFILES = obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/novo-config.h: config/stamp-h1
+config/script-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/novo-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/script-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/novo-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/novo-config.h.in
+$(top_srcdir)/$(subdir)/config/script-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/script-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

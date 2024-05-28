@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_WALLET_WALLETDB_H
-#define NOVO_WALLET_WALLETDB_H
+#ifndef SCRIPT_WALLET_WALLETDB_H
+#define SCRIPT_WALLET_WALLETDB_H
 
 #include "amount.h"
 #include "primitives/transaction.h"
@@ -185,4 +185,4 @@ private:
 
 void ThreadFlushWalletDB();
 
-#endif // NOVO_WALLET_WALLETDB_H
+#endif // SCRIPT_WALLET_WALLETDB_H

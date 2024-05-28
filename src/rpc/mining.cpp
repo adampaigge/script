@@ -202,7 +202,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
             "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
             "\nArguments:\n"
             "1. nblocks      (numeric, required) How many blocks are generated immediately.\n"
-            "2. address      (string, required) The address to send the newly generated novo to.\n"
+            "2. address      (string, required) The address to send the newly generated script to.\n"
             "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
             "4. auxpow       (numeric, optional) If the block should include the auxpow header (default = 0).\n"
             "\nResult:\n"
@@ -222,7 +222,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
         nMineAuxPow = request.params[3].get_int();
     }
 
-    CNovoAddress address(request.params[1].get_str());
+    CScriptAddress address(request.params[1].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Error: Invalid address");
 
@@ -270,7 +270,7 @@ UniValue getmininginfo(const JSONRPCRequest& request)
 }
 
 
-// NOTE: Unlike wallet RPC (which use NOVO values), mining RPCs follow GBT (BIP 22) in using satoshi amounts
+// NOTE: Unlike wallet RPC (which use SCRIPT values), mining RPCs follow GBT (BIP 22) in using satoshi amounts
 UniValue prioritisetransaction(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 3)
@@ -338,10 +338,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "\nIf the request parameters include a 'mode' key, that is used to explicitly select between the default 'template' request or a 'proposal'.\n"
             "It returns data needed to construct a block to work on.\n"
             "For full specification, see BIPs 22, 23, 9, and 145:\n"
-            "    https://github.com/novoworks/bips/blob/master/bip-0022.mediawiki\n"
-            "    https://github.com/novoworks/bips/blob/master/bip-0023.mediawiki\n"
-            "    https://github.com/novoworks/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
-            "    https://github.com/novoworks/bips/blob/master/bip-0145.mediawiki\n"
+            "    https://github.com/scriptworks/bips/blob/master/bip-0022.mediawiki\n"
+            "    https://github.com/scriptworks/bips/blob/master/bip-0023.mediawiki\n"
+            "    https://github.com/scriptworks/bips/blob/master/bip-0009.mediawiki#getblocktemplate_changes\n"
+            "    https://github.com/scriptworks/bips/blob/master/bip-0145.mediawiki\n"
 
             "\nArguments:\n"
             "1. template_request         (json object, optional) A json object in the following spec\n"
@@ -479,10 +479,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");
 
     if (g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0 && !Params().MiningRequiresPeers())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Novo is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Script is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Novo is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Script is downloading blocks...");
 
     static unsigned int nTransactionsUpdatedLast;
 
@@ -848,7 +848,7 @@ UniValue estimatesmartfee(const JSONRPCRequest& request)
             "1. nblocks     (numeric)\n"
             "\nResult:\n"
             "{\n"
-            "  \"feerate\" : x.x,     (numeric) estimate fee-per-kilobyte (in NOVO)\n"
+            "  \"feerate\" : x.x,     (numeric) estimate fee-per-kilobyte (in SCRIPT)\n"
             "  \"blocks\" : n         (numeric) block number where estimate was found\n"
             "}\n"
             "\n"

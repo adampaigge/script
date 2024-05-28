@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_RPCPROTOCOL_H
-#define NOVO_RPCPROTOCOL_H
+#ifndef SCRIPT_RPCPROTOCOL_H
+#define SCRIPT_RPCPROTOCOL_H
 
 #include <list>
 #include <map>
@@ -95,4 +95,4 @@ bool GetAuthCookie(std::string *cookie_out);
 /** Delete RPC authentication cookie from disk */
 void DeleteAuthCookie();
 
-#endif // NOVO_RPCPROTOCOL_H
+#endif // SCRIPT_RPCPROTOCOL_H

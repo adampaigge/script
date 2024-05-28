@@ -3,7 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "novoconsensus.h"
+#include "scriptconsensus.h"
 
 #include "primitives/transaction.h"
 #include "pubkey.h"
@@ -55,7 +55,7 @@ private:
     size_t m_remaining;
 };
 
-inline int set_error(novoconsensus_error* ret, novoconsensus_error serror)
+inline int set_error(scriptconsensus_error* ret, scriptconsensus_error serror)
 {
     if (ret)
         *ret = serror;
@@ -73,53 +73,53 @@ ECCryptoClosure instance_of_eccryptoclosure;
 /** Check that all specified flags are part of the libconsensus interface. */
 static bool verify_flags(unsigned int flags)
 {
-    return (flags & ~(novoconsensus_SCRIPT_FLAGS_VERIFY_ALL)) == 0;
+    return (flags & ~(scriptconsensus_SCRIPT_FLAGS_VERIFY_ALL)) == 0;
 }
 
 static int verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, CAmount amount,
                                     const unsigned char *txTo        , unsigned int txToLen,
-                                    unsigned int nIn, unsigned int flags, novoconsensus_error* err)
+                                    unsigned int nIn, unsigned int flags, scriptconsensus_error* err)
 {
     if (!verify_flags(flags)) {
-        return novoconsensus_ERR_INVALID_FLAGS;
+        return scriptconsensus_ERR_INVALID_FLAGS;
     }
     try {
         TxInputStream stream(SER_NETWORK, PROTOCOL_VERSION, txTo, txToLen);
         CTransaction tx(deserialize, stream);
         if (nIn >= tx.vin.size())
-            return set_error(err, novoconsensus_ERR_TX_INDEX);
+            return set_error(err, scriptconsensus_ERR_TX_INDEX);
         if (GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION) != txToLen)
-            return set_error(err, novoconsensus_ERR_TX_SIZE_MISMATCH);
+            return set_error(err, scriptconsensus_ERR_TX_SIZE_MISMATCH);
 
         // Regardless of the verification result, the tx did not error.
-        set_error(err, novoconsensus_ERR_OK);
+        set_error(err, scriptconsensus_ERR_OK);
 
         PrecomputedTransactionData txdata(tx);
         return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), flags, TransactionSignatureChecker(&tx, nIn, amount, txdata), NULL);
     } catch (const std::exception&) {
-        return set_error(err, novoconsensus_ERR_TX_DESERIALIZE); // Error deserializing
+        return set_error(err, scriptconsensus_ERR_TX_DESERIALIZE); // Error deserializing
     }
 }
 
-int novoconsensus_verify_script_with_amount(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
+int scriptconsensus_verify_script_with_amount(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount,
                                     const unsigned char *txTo        , unsigned int txToLen,
-                                    unsigned int nIn, unsigned int flags, novoconsensus_error* err)
+                                    unsigned int nIn, unsigned int flags, scriptconsensus_error* err)
 {
     CAmount am(amount);
     return ::verify_script(scriptPubKey, scriptPubKeyLen, am, txTo, txToLen, nIn, flags, err);
 }
 
 
-int novoconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+int scriptconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
                                    const unsigned char *txTo        , unsigned int txToLen,
-                                   unsigned int nIn, unsigned int flags, novoconsensus_error* err)
+                                   unsigned int nIn, unsigned int flags, scriptconsensus_error* err)
 {
     CAmount am(0);
     return ::verify_script(scriptPubKey, scriptPubKeyLen, am, txTo, txToLen, nIn, flags, err);
 }
 
-unsigned int novoconsensus_version()
+unsigned int scriptconsensus_version()
 {
     // Just use the API version for now
-    return NOVOCONSENSUS_API_VER;
+    return SCRIPTCONSENSUS_API_VER;
 }

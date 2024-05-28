@@ -212,13 +212,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 
 namespace
 {
-class CNovoAddressVisitor : public boost::static_visitor<bool>
+class CScriptAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CNovoAddress* addr;
+    CScriptAddress* addr;
 
 public:
-    CNovoAddressVisitor(CNovoAddress* addrIn) : addr(addrIn) {}
+    CScriptAddressVisitor(CScriptAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -227,29 +227,29 @@ public:
 
 } // anon namespace
 
-bool CNovoAddress::Set(const CKeyID& id)
+bool CScriptAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CNovoAddress::Set(const CScriptID& id)
+bool CScriptAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CNovoAddress::Set(const CTxDestination& dest)
+bool CScriptAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CNovoAddressVisitor(this), dest);
+    return boost::apply_visitor(CScriptAddressVisitor(this), dest);
 }
 
-bool CNovoAddress::IsValid() const
+bool CScriptAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool CNovoAddress::IsValid(const CChainParams& params) const
+bool CScriptAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -257,7 +257,7 @@ bool CNovoAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CNovoAddress::Get() const
+CTxDestination CScriptAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -271,7 +271,7 @@ CTxDestination CNovoAddress::Get() const
         return CNoDestination();
 }
 
-bool CNovoAddress::GetKeyID(CKeyID& keyID) const
+bool CScriptAddress::GetKeyID(CKeyID& keyID) const
 {
     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
         return false;
@@ -281,12 +281,12 @@ bool CNovoAddress::GetKeyID(CKeyID& keyID) const
     return true;
 }
 
-bool CNovoAddress::IsScript() const
+bool CScriptAddress::IsScript() const
 {
     return IsValid() && vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }
 
-void CNovoSecret::SetKey(const CKey& vchSecret)
+void CScriptSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -294,7 +294,7 @@ void CNovoSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CNovoSecret::GetKey()
+CKey CScriptSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -302,19 +302,19 @@ CKey CNovoSecret::GetKey()
     return ret;
 }
 
-bool CNovoSecret::IsValid() const
+bool CScriptSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == Params().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool CNovoSecret::SetString(const char* pszSecret)
+bool CScriptSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CNovoSecret::SetString(const std::string& strSecret)
+bool CScriptSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }

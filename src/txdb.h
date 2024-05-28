@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_TXDB_H
-#define NOVO_TXDB_H
+#ifndef SCRIPT_TXDB_H
+#define SCRIPT_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -125,4 +125,4 @@ public:
     bool LoadBlockIndexGuts(boost::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // NOVO_TXDB_H
+#endif // SCRIPT_TXDB_H

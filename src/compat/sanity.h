@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_COMPAT_SANITY_H
-#define NOVO_COMPAT_SANITY_H
+#ifndef SCRIPT_COMPAT_SANITY_H
+#define SCRIPT_COMPAT_SANITY_H
 
 bool glibc_sanity_test();
 bool glibcxx_sanity_test();
 
-#endif // NOVO_COMPAT_SANITY_H
+#endif // SCRIPT_COMPAT_SANITY_H

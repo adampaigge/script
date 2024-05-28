@@ -10,7 +10,7 @@ from .script import CScript, OP_TRUE, OP_CHECKSIG, OP_RETURN
 # Create a block (with regtest difficulty)
 def create_block(hashprev, coinbase, nTime=None):
     block = CBlock()
-    # Novo: Create a non-AuxPoW block but include chain ID
+    # Script: Create a non-AuxPoW block but include chain ID
     block.nVersion = 0x620004
     if nTime is None:
         import time

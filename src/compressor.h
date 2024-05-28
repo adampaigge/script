@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_COMPRESSOR_H
-#define NOVO_COMPRESSOR_H
+#ifndef SCRIPT_COMPRESSOR_H
+#define SCRIPT_COMPRESSOR_H
 
 #include "primitives/transaction.h"
 #include "script/script.h"
@@ -188,4 +188,4 @@ public:
     }
 };
 
-#endif // NOVO_COMPRESSOR_H
+#endif // SCRIPT_COMPRESSOR_H

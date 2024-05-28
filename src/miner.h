@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_MINER_H
-#define NOVO_MINER_H
+#ifndef SCRIPT_MINER_H
+#define SCRIPT_MINER_H
 
 #include "primitives/block.h"
 #include "txmempool.h"
@@ -209,4 +209,4 @@ private:
 void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParams, const CBlockIndex* pindexPrev);
 
-#endif // NOVO_MINER_H
+#endif // SCRIPT_MINER_H

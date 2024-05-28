@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_TXMEMPOOL_H
-#define NOVO_TXMEMPOOL_H
+#ifndef SCRIPT_TXMEMPOOL_H
+#define SCRIPT_TXMEMPOOL_H
 
 #include <memory>
 #include <set>
@@ -730,4 +730,4 @@ struct TxCoinAgePriorityCompare
     }
 };
 
-#endif // NOVO_TXMEMPOOL_H
+#endif // SCRIPT_TXMEMPOOL_H

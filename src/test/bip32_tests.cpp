@@ -9,7 +9,7 @@
 #include "uint256.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_novo.h"
+#include "test/test_script.h"
 
 #include <string>
 #include <vector>
@@ -90,18 +90,18 @@ void RunTest(const TestVector &test) {
         pubkey.Encode(data);
 
         // Test private key
-        CNovoExtKey b58key; b58key.SetKey(key);
+        CScriptExtKey b58key; b58key.SetKey(key);
         BOOST_CHECK(b58key.ToString() == derive.prv);
 
-        CNovoExtKey b58keyDecodeCheck(derive.prv);
+        CScriptExtKey b58keyDecodeCheck(derive.prv);
         CExtKey checkKey = b58keyDecodeCheck.GetKey();
         assert(checkKey == key); //ensure a base58 decoded key also matches
 
         // Test public key
-        CNovoExtPubKey b58pubkey; b58pubkey.SetKey(pubkey);
+        CScriptExtPubKey b58pubkey; b58pubkey.SetKey(pubkey);
         BOOST_CHECK(b58pubkey.ToString() == derive.pub);
 
-        CNovoExtPubKey b58PubkeyDecodeCheck(derive.pub);
+        CScriptExtPubKey b58PubkeyDecodeCheck(derive.pub);
         CExtPubKey checkPubKey = b58PubkeyDecodeCheck.GetKey();
         assert(checkPubKey == pubkey); //ensure a base58 decoded pubkey also matches
 

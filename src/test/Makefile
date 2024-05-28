@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. novo_test
+	$(MAKE) -C .. script_test
 clean:
-	$(MAKE) -C .. novo_test_clean
+	$(MAKE) -C .. script_test_clean
 check:
-	$(MAKE) -C .. novo_test_check
+	$(MAKE) -C .. script_test_check

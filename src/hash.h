@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_HASH_H
-#define NOVO_HASH_H
+#ifndef SCRIPT_HASH_H
+#define SCRIPT_HASH_H
 
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
@@ -229,4 +229,4 @@ public:
  */
 uint64_t SipHashUint256(uint64_t k0, uint64_t k1, const uint256& val);
 
-#endif // NOVO_HASH_H
+#endif // SCRIPT_HASH_H

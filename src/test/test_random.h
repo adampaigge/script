@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_TEST_RANDOM_H
-#define NOVO_TEST_RANDOM_H
+#ifndef SCRIPT_TEST_RANDOM_H
+#define SCRIPT_TEST_RANDOM_H
 
 #include "random.h"
 

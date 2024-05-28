@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_NOVO_FEES_H
-#define NOVO_NOVO_FEES_H
+#ifndef SCRIPT_SCRIPT_FEES_H
+#define SCRIPT_SCRIPT_FEES_H
 
 #include "amount.h"
 #include "chain.h"
@@ -22,10 +22,10 @@ enum FeeRatePreset
 };
 
 /** Estimate fee rate needed to get into the next nBlocks */
-CFeeRate GetNovoFeeRate(int priority);
-const std::string GetNovoPriorityLabel(int priority);
+CFeeRate GetScriptFeeRate(int priority);
+const std::string GetScriptPriorityLabel(int priority);
 #endif // ENABLE_WALLET
-CAmount GetNovoMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree);
-CAmount GetNovoDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit);
+CAmount GetScriptMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree);
+CAmount GetScriptDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit);
 
-#endif // NOVO_NOVO_FEES_H
+#endif // SCRIPT_SCRIPT_FEES_H

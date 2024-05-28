@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_PRIMITIVES_TRANSACTION_H
-#define NOVO_PRIMITIVES_TRANSACTION_H
+#ifndef SCRIPT_PRIMITIVES_TRANSACTION_H
+#define SCRIPT_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -208,7 +208,7 @@ public:
         return (nValue == -1);
     }
 
-    // Novo: allow comparison against different dustlimit parameters
+    // Script: allow comparison against different dustlimit parameters
     bool IsDust(const CAmount dustLimit) const
     {
       if (scriptPubKey.IsUnspendable())
@@ -477,4 +477,4 @@ template <typename Tx> static inline CTransactionRef MakeTransactionRef(Tx&& txI
 /** Compute the size of a transaction */
 int64_t GetTransactionSize(const CTransaction &tx);
 
-#endif // NOVO_PRIMITIVES_TRANSACTION_H
+#endif // SCRIPT_PRIMITIVES_TRANSACTION_H

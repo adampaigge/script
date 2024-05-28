@@ -1,13 +1,13 @@
-# Release Notes for Novo version 0.1.0
+# Release Notes for Script version 0.1.0
 
-The source code of Novo is released regularly for public audits. It complies with the [Semantic Versioning (semver.org)](https://semver.org/).
+The source code of Script is released regularly for public audits. It complies with the [Semantic Versioning (semver.org)](https://semver.org/).
 
 - For bug fixes and minor improvements, please submit Pull Requests directly.
 - For significant enhancements, please write a draft so that we can discuss them more deeply.
 
-## Novo v0.1.0
+## Script v0.1.0
 
-this is the initial source code release of Novo.
+this is the initial source code release of Script.
 
 It mainly contains changes listed below:
 
@@ -17,8 +17,8 @@ It mainly contains changes listed below:
 2. The difficulty adjustment algorithm is changed to ASERT.
 3. The block interval is set to 150 seconds.
 4. The decimal is four digits.
-5. The initial block reward is 2,000,000 NOVO.
-6. The max total supply is 840,000,000,000 NOVO.
+5. The initial block reward is 2,000,000 SCRIPT.
+6. The max total supply is 840,000,000,000 SCRIPT.
 7. The hashing of TXID is now based on Rich Transaction Body.
 8. The block size limit is 8MB initially.
 9. The maximum transaction size is 1MB initially.

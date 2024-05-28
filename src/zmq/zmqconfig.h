@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_ZMQ_ZMQCONFIG_H
-#define NOVO_ZMQ_ZMQCONFIG_H
+#ifndef SCRIPT_ZMQ_ZMQCONFIG_H
+#define SCRIPT_ZMQ_ZMQCONFIG_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include <stdarg.h>
@@ -21,4 +21,4 @@
 
 void zmqError(const char *str);
 
-#endif // NOVO_ZMQ_ZMQCONFIG_H
+#endif // SCRIPT_ZMQ_ZMQCONFIG_H

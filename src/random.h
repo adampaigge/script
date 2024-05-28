@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_RANDOM_H
-#define NOVO_RANDOM_H
+#ifndef SCRIPT_RANDOM_H
+#define SCRIPT_RANDOM_H
 
 #include "uint256.h"
 
@@ -46,4 +46,4 @@ public:
     uint32_t Rw;
 };
 
-#endif // NOVO_RANDOM_H
+#endif // SCRIPT_RANDOM_H

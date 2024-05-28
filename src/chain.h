@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_CHAIN_H
-#define NOVO_CHAIN_H
+#ifndef SCRIPT_CHAIN_H
+#define SCRIPT_CHAIN_H
 
 #include "arith_uint256.h"
 #include "primitives/block.h"
@@ -472,4 +472,4 @@ public:
     CBlockIndex* FindEarliestAtLeast(int64_t nTime) const;
 };
 
-#endif // NOVO_CHAIN_H
+#endif // SCRIPT_CHAIN_H

@@ -5,11 +5,11 @@
 /**
  * Utility functions shared by unit tests
  */
-#ifndef NOVO_TEST_TESTUTIL_H
-#define NOVO_TEST_TESTUTIL_H
+#ifndef SCRIPT_TEST_TESTUTIL_H
+#define SCRIPT_TEST_TESTUTIL_H
 
 #include <boost/filesystem/path.hpp>
 
 boost::filesystem::path GetTempPath();
 
-#endif // NOVO_TEST_TESTUTIL_H
+#endif // SCRIPT_TEST_TESTUTIL_H

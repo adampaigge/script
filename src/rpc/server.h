@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_RPCSERVER_H
-#define NOVO_RPCSERVER_H
+#ifndef SCRIPT_RPCSERVER_H
+#define SCRIPT_RPCSERVER_H
 
 #include "amount.h"
 #include "rpc/protocol.h"
@@ -209,4 +209,4 @@ void RPCNotifyBlockChange(bool ibd, const CBlockIndex *);
 // Retrieves any serialization flags requested in command line argument
 int RPCSerializationFlags();
 
-#endif // NOVO_RPCSERVER_H
+#endif // SCRIPT_RPCSERVER_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_CONSENSUS_VALIDATION_H
-#define NOVO_CONSENSUS_VALIDATION_H
+#ifndef SCRIPT_CONSENSUS_VALIDATION_H
+#define SCRIPT_CONSENSUS_VALIDATION_H
 
 #include <string>
 
@@ -85,4 +85,4 @@ public:
     std::string GetDebugMessage() const { return strDebugMessage; }
 };
 
-#endif // NOVO_CONSENSUS_VALIDATION_H
+#endif // SCRIPT_CONSENSUS_VALIDATION_H

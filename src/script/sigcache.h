@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SCRIPT_SIGCACHE_H
-#define NOVO_SCRIPT_SIGCACHE_H
+#ifndef SCRIPT_SCRIPT_SIGCACHE_H
+#define SCRIPT_SCRIPT_SIGCACHE_H
 
 #include "script/interpreter.h"
 
@@ -32,4 +32,4 @@ public:
 
 void InitSignatureCache();
 
-#endif // NOVO_SCRIPT_SIGCACHE_H
+#endif // SCRIPT_SCRIPT_SIGCACHE_H

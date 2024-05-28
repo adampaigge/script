@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_ADDRMAN_H
-#define NOVO_ADDRMAN_H
+#ifndef SCRIPT_ADDRMAN_H
+#define SCRIPT_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -591,4 +591,4 @@ public:
 
 };
 
-#endif // NOVO_ADDRMAN_H
+#endif // SCRIPT_ADDRMAN_H

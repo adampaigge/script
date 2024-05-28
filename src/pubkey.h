@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_PUBKEY_H
-#define NOVO_PUBKEY_H
+#ifndef SCRIPT_PUBKEY_H
+#define SCRIPT_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -260,4 +260,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // NOVO_PUBKEY_H
+#endif // SCRIPT_PUBKEY_H

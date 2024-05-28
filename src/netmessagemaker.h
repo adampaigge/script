@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_NETMESSAGEMAKER_H
-#define NOVO_NETMESSAGEMAKER_H
+#ifndef SCRIPT_NETMESSAGEMAKER_H
+#define SCRIPT_NETMESSAGEMAKER_H
 
 #include "net.h"
 #include "serialize.h"
@@ -33,4 +33,4 @@ private:
     const int nVersion;
 };
 
-#endif // NOVO_NETMESSAGEMAKER_H
+#endif // SCRIPT_NETMESSAGEMAKER_H

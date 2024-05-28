@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_POLICY_POLICY_H
-#define NOVO_POLICY_POLICY_H
+#ifndef SCRIPT_POLICY_POLICY_H
+#define SCRIPT_POLICY_POLICY_H
 
 #include "consensus/consensus.h"
 #include "script/interpreter.h"
@@ -15,7 +15,7 @@
 
 class CCoinsViewCache;
 
-/** Recommended transaction fee per kilobyte by Novo developers
+/** Recommended transaction fee per kilobyte by Script developers
   *
   * All fee defaults used throughout the client derive their
   * value from this base default.
@@ -39,7 +39,7 @@ static const unsigned int DEFAULT_MAX_MEMPOOL_SIZE = 2048;
 /** Default for -incrementalrelayfee, which sets the minimum feerate increase
  *  for mempool limiting or BIP 125 replacement
  *
- *  Novo:    Increment mempool limits and accept RBF in steps of 0.01 NOVO
+ *  Script:    Increment mempool limits and accept RBF in steps of 0.01 SCRIPT
  *  Calculation: DEFAULT_MIN_RELAY_TX_FEE = RECOMMENDED_MIN_TX_FEE / 10
  *               DEFAULT_INCREMENTAL_RELAY_FEE = DEFAULT_MIN_RELAY_TX_FEE / 10
  *
@@ -56,13 +56,13 @@ static const CAmount DEFAULT_INCREMENTAL_RELAY_FEE = CENT;
 static const unsigned int DEFAULT_BYTES_PER_SIGOP = 20;
 
 /**
- * Novo: Default dust limit that is evaluated when considering whether a
+ * Script: Default dust limit that is evaluated when considering whether a
  * transaction output is required to pay additional fee for relay and inclusion
  * in blocks. Overridden by -dustlimit
  */
 static const CAmount DEFAULT_DUST_LIMIT = 5 * COIN;
 /**
- * Novo: Default hard dust limit that is evaluated when considering whether
+ * Script: Default hard dust limit that is evaluated when considering whether
  * a transaction is standard. Transactions under this limit will not be accepted
  * to the mempool and thus not relayed. Can be overridden by -harddustlimit
  *
@@ -109,4 +109,4 @@ extern CAmount nDustLimit;
 extern CAmount nHardDustLimit;
 
 
-#endif // NOVO_POLICY_POLICY_H
+#endif // SCRIPT_POLICY_POLICY_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SCRIPT_SCRIPT_ERROR_H
-#define NOVO_SCRIPT_SCRIPT_ERROR_H
+#ifndef SCRIPT_SCRIPT_SCRIPT_ERROR_H
+#define SCRIPT_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t
 {
@@ -82,4 +82,4 @@ typedef enum ScriptError_t
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // NOVO_SCRIPT_SCRIPT_ERROR_H
+#endif // SCRIPT_SCRIPT_SCRIPT_ERROR_H

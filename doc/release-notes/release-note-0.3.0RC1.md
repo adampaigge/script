@@ -1,8 +1,8 @@
-# Release Notes for Novo version 0.3.0RC1
+# Release Notes for Script version 0.3.0RC1
 
-Novo version 0.3.0RC1 is now available from:
+Script version 0.3.0RC1 is now available from:
 
-  <https://novonode.org>
+  <https://scriptnode.org>
 
 It mainly contains changes listed below:
 

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_RPCCLIENT_H
-#define NOVO_RPCCLIENT_H
+#ifndef SCRIPT_RPCCLIENT_H
+#define SCRIPT_RPCCLIENT_H
 
 #include <univalue.h>
 
@@ -19,4 +19,4 @@ UniValue RPCConvertNamedValues(const std::string& strMethod, const std::vector<s
  */
 UniValue ParseNonRFCJSONValue(const std::string& strVal);
 
-#endif // NOVO_RPCCLIENT_H
+#endif // SCRIPT_RPCCLIENT_H

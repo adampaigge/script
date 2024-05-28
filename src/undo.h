@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_UNDO_H
-#define NOVO_UNDO_H
+#ifndef SCRIPT_UNDO_H
+#define SCRIPT_UNDO_H
 
 #include "compressor.h"
 #include "primitives/transaction.h"
@@ -76,4 +76,4 @@ public:
     }
 };
 
-#endif // NOVO_UNDO_H
+#endif // SCRIPT_UNDO_H

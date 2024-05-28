@@ -84,7 +84,7 @@ public:
         strNetworkID = "main";
 
         consensus.nSubsidyHalvingInterval = 210000;
-        // BIP34 is never enforced in Novo v2 blocks, so we enforce from v3
+        // BIP34 is never enforced in Script v2 blocks, so we enforce from v3
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("00000000df5c5164b4516916ac7a520df6039e8cac3d4ac9235e15eace81acd2");
         consensus.BIP66Height = 1;
@@ -250,8 +250,8 @@ public:
 
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("testnet.novobitcoin.org", "testnet-seed.novobitcoin.org", true));
-        vSeeds.push_back(CDNSSeedData("testnet.novoscan.org", "testnet-seed.novoscan.org", true));
+        vSeeds.push_back(CDNSSeedData("testnet.scriptbitcoin.org", "testnet-seed.scriptbitcoin.org", true));
+        vSeeds.push_back(CDNSSeedData("testnet.scriptscan.org", "testnet-seed.scriptscan.org", true));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 196);

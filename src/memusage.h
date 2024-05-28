@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_MEMUSAGE_H
-#define NOVO_MEMUSAGE_H
+#ifndef SCRIPT_MEMUSAGE_H
+#define SCRIPT_MEMUSAGE_H
 
 #include "indirectmap.h"
 
@@ -169,4 +169,4 @@ static inline size_t DynamicUsage(const boost::unordered_map<X, Y, Z>& m)
 
 }
 
-#endif // NOVO_MEMUSAGE_H
+#endif // SCRIPT_MEMUSAGE_H

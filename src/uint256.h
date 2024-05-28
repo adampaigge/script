@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_UINT256_H
-#define NOVO_UINT256_H
+#ifndef SCRIPT_UINT256_H
+#define SCRIPT_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -168,4 +168,4 @@ inline uint256 uint256S(const std::string& str)
     return rv;
 }
 
-#endif // NOVO_UINT256_H
+#endif // SCRIPT_UINT256_H

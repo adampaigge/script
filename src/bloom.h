@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_BLOOM_H
-#define NOVO_BLOOM_H
+#ifndef SCRIPT_BLOOM_H
+#define SCRIPT_BLOOM_H
 
 #include "serialize.h"
 
@@ -140,4 +140,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // NOVO_BLOOM_H
+#endif // SCRIPT_BLOOM_H

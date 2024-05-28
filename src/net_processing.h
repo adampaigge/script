@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_NET_PROCESSING_H
-#define NOVO_NET_PROCESSING_H
+#ifndef SCRIPT_NET_PROCESSING_H
+#define SCRIPT_NET_PROCESSING_H
 
 #include "net.h"
 #include "validationinterface.h"
@@ -68,4 +68,4 @@ bool ProcessMessages(CNode* pfrom, CConnman& connman, const std::atomic<bool>& i
  */
 bool SendMessages(CNode* pto, CConnman& connman, const std::atomic<bool>& interrupt);
 
-#endif // NOVO_NET_PROCESSING_H
+#endif // SCRIPT_NET_PROCESSING_H

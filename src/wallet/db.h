@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_WALLET_DB_H
-#define NOVO_WALLET_DB_H
+#ifndef SCRIPT_WALLET_DB_H
+#define SCRIPT_WALLET_DB_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -306,4 +306,4 @@ public:
     bool static Rewrite(const std::string& strFile, const char* pszSkip = NULL);
 };
 
-#endif // NOVO_WALLET_DB_H
+#endif // SCRIPT_WALLET_DB_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SCRIPT_ISMINE_H
-#define NOVO_SCRIPT_ISMINE_H
+#ifndef SCRIPT_SCRIPT_ISMINE_H
+#define SCRIPT_SCRIPT_ISMINE_H
 
 #include "script/standard.h"
 
@@ -38,4 +38,4 @@ isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, bool& isInvalid);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest);
 
-#endif // NOVO_SCRIPT_ISMINE_H
+#endif // SCRIPT_SCRIPT_ISMINE_H

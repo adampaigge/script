@@ -1,12 +1,12 @@
 *.tar.gz
 
 *.exe
-src/novo
-src/novod
-src/novo-cli
-src/novo-tx
-src/test/test_novo
-src/test/test_novo_fuzzy
+src/script
+src/scriptd
+src/script-cli
+src/script-tx
+src/test/test_script
+src/test/test_script_fuzzy
 
 # autoreconf
 Makefile.in
@@ -29,8 +29,8 @@ config.log
 config.status
 configure
 libtool
-src/config/novo-config.h
-src/config/novo-config.h.in
+src/config/script-config.h
+src/config/script-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 
@@ -82,7 +82,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_novo.coverage/
+test_script.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -97,7 +97,7 @@ qa/cache/*
 
 /doc/doxygen/
 
-libnovoconsensus.pc
+libscriptconsensus.pc
 contrib/devtools/split-debug.sh
 
 .idea/

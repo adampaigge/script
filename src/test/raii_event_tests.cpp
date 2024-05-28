@@ -12,7 +12,7 @@
 
 #include "support/events.h"
 
-#include "test/test_novo.h"
+#include "test/test_script.h"
 
 #include <vector>
 

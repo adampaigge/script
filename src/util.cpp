@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include "util.h"
@@ -103,8 +103,8 @@ namespace boost {
 
 using namespace std;
 
-const char * const NOVO_CONF_FILENAME = "novo.conf";
-const char * const NOVO_PID_FILENAME = "novod.pid";
+const char * const SCRIPT_CONF_FILENAME = "script.conf";
+const char * const SCRIPT_PID_FILENAME = "scriptd.pid";
 
 CCriticalSection cs_args;
 map<string, string> mapArgs;
@@ -462,7 +462,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "novo";
+    const char* pszModule = "script";
 #endif
     if (pex)
         return strprintf(
@@ -482,13 +482,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Novo
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Novo
-    // Mac: ~/Library/Application Support/Novo
-    // Unix: ~/.novo
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Script
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Script
+    // Mac: ~/Library/Application Support/Script
+    // Unix: ~/.script
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Novo";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Script";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -498,10 +498,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/Novo";
+    return pathRet / "Library/Application Support/Script";
 #else
     // Unix
-    return pathRet / ".novo";
+    return pathRet / ".script";
 #endif
 #endif
 }
@@ -561,7 +561,7 @@ void ReadConfigFile(const std::string& confPath)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good())
-        return; // No novo.conf file is OK
+        return; // No script.conf file is OK
 
     {
         LOCK(cs_args);
@@ -570,7 +570,7 @@ void ReadConfigFile(const std::string& confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override novo.conf
+            // Don't overwrite existing settings so command line settings override script.conf
             string strKey = string("-") + it->string_key;
             string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);
@@ -586,7 +586,7 @@ void ReadConfigFile(const std::string& confPath)
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", NOVO_PID_FILENAME));
+    boost::filesystem::path pathPidFile(GetArg("-pid", SCRIPT_PID_FILENAME));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

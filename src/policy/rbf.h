@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_POLICY_RBF_H
-#define NOVO_POLICY_RBF_H
+#ifndef SCRIPT_POLICY_RBF_H
+#define SCRIPT_POLICY_RBF_H
 
 #include "txmempool.h"
 
@@ -23,4 +23,4 @@ bool SignalsOptInRBF(const CTransaction &tx);
 // as the sequence numbers of all in-mempool ancestors.
 RBFTransactionState IsRBFOptIn(const CTransaction &tx, CTxMemPool &pool);
 
-#endif // NOVO_POLICY_RBF_H
+#endif // SCRIPT_POLICY_RBF_H

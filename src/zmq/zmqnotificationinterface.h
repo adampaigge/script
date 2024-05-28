@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_ZMQ_ZMQNOTIFICATIONINTERFACE_H
-#define NOVO_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#ifndef SCRIPT_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#define SCRIPT_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 #include <string>
@@ -34,4 +34,4 @@ private:
     std::list<CZMQAbstractNotifier*> notifiers;
 };
 
-#endif // NOVO_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#endif // SCRIPT_ZMQ_ZMQNOTIFICATIONINTERFACE_H

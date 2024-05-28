@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_CRYPTO_COMMON_H
-#define NOVO_CRYPTO_COMMON_H
+#ifndef SCRIPT_CRYPTO_COMMON_H
+#define SCRIPT_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "novo-config.h"
+#include "script-config.h"
 #endif
 
 #include <stdint.h>
@@ -79,4 +79,4 @@ void static inline WriteBE64(unsigned char* ptr, uint64_t x)
     memcpy(ptr, (char*)&v, 8);
 }
 
-#endif // NOVO_CRYPTO_COMMON_H
+#endif // SCRIPT_CRYPTO_COMMON_H

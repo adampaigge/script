@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_NETADDRESS_H
-#define NOVO_NETADDRESS_H
+#ifndef SCRIPT_NETADDRESS_H
+#define SCRIPT_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #include "compat.h"
@@ -168,4 +168,4 @@ class CService : public CNetAddr
         }
 };
 
-#endif // NOVO_NETADDRESS_H
+#endif // SCRIPT_NETADDRESS_H

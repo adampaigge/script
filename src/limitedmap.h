@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_LIMITEDMAP_H
-#define NOVO_LIMITEDMAP_H
+#ifndef SCRIPT_LIMITEDMAP_H
+#define SCRIPT_LIMITEDMAP_H
 
 #include <assert.h>
 #include <map>
@@ -97,4 +97,4 @@ public:
     }
 };
 
-#endif // NOVO_LIMITEDMAP_H
+#endif // SCRIPT_LIMITEDMAP_H

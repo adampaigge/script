@@ -10,7 +10,7 @@
 #include "crypto/hmac_sha256.h"
 #include "crypto/hmac_sha512.h"
 #include "utilstrencodings.h"
-#include "test/test_novo.h"
+#include "test/test_script.h"
 #include "test/test_random.h"
 
 #include <vector>
@@ -248,7 +248,7 @@ BOOST_AUTO_TEST_CASE(sha256_testvectors) {
                "f08a78cbbaee082b052ae0708f32fa1e50c5c421aa772ba5dbb406a2ea6be342");
     TestSHA256("This is exactly 64 bytes long, not counting the terminating byte",
                "ab64eff7e88e2e46165e29f2bce41826bd4c7b3552f6b382a9e7d3af47c245f8");
-    TestSHA256("As the Novo relies on 80 byte header hashes, we want to have an example for that",
+    TestSHA256("As the Script relies on 80 byte header hashes, we want to have an example for that",
                "d2c6deca36df2eebc533b68e99e78ade3d1ce22c6ba3639fd98832dfec525bf0");
     TestSHA256(std::string(1000000, 'a'),
                "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0");

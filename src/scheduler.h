@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_SCHEDULER_H
-#define NOVO_SCHEDULER_H
+#ifndef SCRIPT_SCHEDULER_H
+#define SCRIPT_SCHEDULER_H
 
 //
 // NOTE:

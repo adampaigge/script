@@ -1,4 +1,4 @@
-BIPs that are implemented by Novo (up-to-date up to **v0.13.0**):
+BIPs that are implemented by Script (up-to-date up to **v0.13.0**):
 
 * [`BIP 9`](bips/bip-0009.mediawiki): The changes allowing multiple soft-forks to be deployed in parallel have been implemented since **v0.12.1**  ([PR #7575](https://github.com/bitcoin/bitcoin/pull/7575))
 * [`BIP 11`](bips/bip-0011.mediawiki): Multisig outputs are standard since **v0.6.0** ([PR #669](https://github.com/bitcoin/bitcoin/pull/669)).
@@ -18,5 +18,5 @@ BIPs that are implemented by Novo (up-to-date up to **v0.13.0**):
 * [`BIP 113`](bips/bip-0113.mediawiki): Median time past lock-time calculations have been implemented since **v0.12.1** ([PR #6566](https://github.com/bitcoin/bitcoin/pull/6566)) and have been activated since *block 419328*.
 * [`BIP 130`](bips/bip-0130.mediawiki): direct headers announcement is negotiated with peer versions `>=70012` as of **v0.12.0** ([PR 6494](https://github.com/bitcoin/bitcoin/pull/6494)).
 * [`BIP 133`](bips/bip-0133.mediawiki): feefilter messages are respected and sent for peer versions `>=70013` as of **v0.13.0** ([PR 7542](https://github.com/bitcoin/bitcoin/pull/7542)).
-* [`BIP 147`](bips/bip-0147.mediawiki): NULLDUMMY softfork as of **v0.13.1** ([PR 8636](https://github.com/bitcoin/bitcoin/pull/8636) and [PR 8937](https://github.com/bitcoin/bitcoin/pull/8937)). BIP 147 has been removed in Novo.
+* [`BIP 147`](bips/bip-0147.mediawiki): NULLDUMMY softfork as of **v0.13.1** ([PR 8636](https://github.com/bitcoin/bitcoin/pull/8636) and [PR 8937](https://github.com/bitcoin/bitcoin/pull/8937)). BIP 147 has been removed in Script.
 * [`BIP 152`](bips/bip-0152.mediawiki): Compact block transfer and related optimizations are used as of **v0.13.0** ([PR 8068](https://github.com/bitcoin/bitcoin/pull/8068)).

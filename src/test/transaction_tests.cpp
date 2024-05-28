@@ -4,7 +4,7 @@
 
 #include "data/tx_invalid.json.h"
 #include "data/tx_valid.json.h"
-#include "test/test_novo.h"
+#include "test/test_script.h"
 
 #include "chainparams.h"
 #include "clientversion.h"
@@ -585,7 +585,7 @@ BOOST_AUTO_TEST_CASE(test_IsStandard)
 
     std::string reason;
 
-    // Standard: 10 NOVO
+    // Standard: 10 SCRIPT
     t.vout[0].nValue = 10 * COIN;
     BOOST_CHECK(IsStandardTx(t, reason));
 

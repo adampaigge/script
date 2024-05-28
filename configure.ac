@@ -5,24 +5,24 @@ define(_CLIENT_VERSION_MINOR, 3)
 define(_CLIENT_VERSION_REVISION, 0)
 define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
-define(_COPYRIGHT_YEAR, 2022)
+define(_COPYRIGHT_YEAR, 2024)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core and Dogecoin Core and Novo]])
-AC_INIT([Novo],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/novochain/novo/issues],[novo],[https://novonode.org/])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Bitcoin Core and Dogecoin Core and Script and Script]])
+AC_INIT([Script],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/adampaigge/script/issues],[script],[https://linktr.ee/supernovalabs])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/novo-config.h])
+AC_CONFIG_HEADERS([src/config/script-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-NOVO_DAEMON_NAME=novod
-NOVO_CLI_NAME=novo-cli
-NOVO_TX_NAME=novo-tx
+SCRIPT_DAEMON_NAME=scriptd
+SCRIPT_CLI_NAME=script-cli
+SCRIPT_TX_NAME=script-tx
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef NOVO_CONFIG_H])
-AH_TOP([#define NOVO_CONFIG_H])
-AH_BOTTOM([#endif //NOVO_CONFIG_H])
+AH_TOP([#ifndef SCRIPT_CONFIG_H])
+AH_TOP([#define SCRIPT_CONFIG_H])
+AH_BOTTOM([#endif //SCRIPT_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -232,21 +232,21 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build novo-cli novo-tx (default=yes)])],
-  [build_novo_utils=$withval],
-  [build_novo_utils=yes])
+  [build script-cli script-tx (default=yes)])],
+  [build_script_utils=$withval],
+  [build_script_utils=yes])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_novo_libs=$withval],
-  [build_novo_libs=yes])
+  [build_script_libs=$withval],
+  [build_script_libs=yes])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build novod daemon (default=yes)])],
-  [build_novod=$withval],
-  [build_novod=yes])
+  [build scriptd daemon (default=yes)])],
+  [build_scriptd=$withval],
+  [build_scriptd=yes])
 
 use_pkgconfig=yes
 case $host in
@@ -430,7 +430,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to novo-config.h, but
+# The following macro will add the necessary defines to script-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -586,7 +586,7 @@ AC_SUBST(LIBMEMENV)
 
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
-    NOVO_FIND_BDB53
+    SCRIPT_FIND_BDB53
 fi
 
 dnl Check for libminiupnpc (optional)
@@ -598,7 +598,7 @@ if test x$use_upnp != xno; then
   )
 fi
 
-if test x$build_novo_utils$build_novod$use_tests$use_bench = xnononono; then
+if test x$build_script_utils$build_scriptd$use_tests$use_bench = xnononono; then
     use_boost=no
 else
     use_boost=yes
@@ -786,7 +786,7 @@ if test x$use_pkgconfig = xyes; then
     [
       PKG_CHECK_MODULES([SSL], [libssl],, [AC_MSG_ERROR(openssl  not found.)])
       PKG_CHECK_MODULES([CRYPTO], [libcrypto],,[AC_MSG_ERROR(libcrypto  not found.)])
-      if test x$build_novo_utils$build_novod$use_tests != xnonono; then
+      if test x$build_script_utils$build_scriptd$use_tests != xnonono; then
         PKG_CHECK_MODULES([EVENT], [libevent],, [AC_MSG_ERROR(libevent not found.)])
         if test x$TARGET_OS != xwindows; then
           PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads],, [AC_MSG_ERROR(libevent_pthreads not found.)])
@@ -811,7 +811,7 @@ else
   AC_CHECK_HEADER([openssl/ssl.h],, AC_MSG_ERROR(libssl headers missing),)
   AC_CHECK_LIB([ssl],         [main],SSL_LIBS=-lssl, AC_MSG_ERROR(libssl missing))
 
-  if test x$build_novo_utils$build_novod$use_tests != xnonono; then
+  if test x$build_script_utils$build_scriptd$use_tests != xnonono; then
     AC_CHECK_HEADER([event2/event.h],, AC_MSG_ERROR(libevent headers missing),)
     AC_CHECK_LIB([event],[main],EVENT_LIBS=-levent,AC_MSG_ERROR(libevent missing))
     if test x$TARGET_OS != xwindows; then
@@ -854,7 +854,7 @@ dnl univalue check
 
 need_bundled_univalue=yes
 
-if test x$build_novo_utils$build_novod$use_tests$use_bench = xnononono; then
+if test x$build_script_utils$build_scriptd$use_tests$use_bench = xnononono; then
   need_bundled_univalue=no
 else
 
@@ -898,21 +898,21 @@ AM_CONDITIONAL([EMBEDDED_UNIVALUE],[test x$need_bundled_univalue = xyes])
 AC_SUBST(UNIVALUE_CFLAGS)
 AC_SUBST(UNIVALUE_LIBS)
 
-AC_MSG_CHECKING([whether to build novod])
-AM_CONDITIONAL([BUILD_NOVOD], [test x$build_novod = xyes])
-AC_MSG_RESULT($build_novod)
+AC_MSG_CHECKING([whether to build scriptd])
+AM_CONDITIONAL([BUILD_SCRIPTD], [test x$build_scriptd = xyes])
+AC_MSG_RESULT($build_scriptd)
 
-AC_MSG_CHECKING([whether to build utils (novo-cli novo-tx)])
-AM_CONDITIONAL([BUILD_NOVO_UTILS], [test x$build_novo_utils = xyes])
-AC_MSG_RESULT($build_novo_utils)
+AC_MSG_CHECKING([whether to build utils (script-cli script-tx)])
+AM_CONDITIONAL([BUILD_SCRIPT_UTILS], [test x$build_script_utils = xyes])
+AC_MSG_RESULT($build_script_utils)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_NOVO_LIBS], [test x$build_novo_libs = xyes])
-if test x$build_novo_libs = xyes; then
+AM_CONDITIONAL([BUILD_SCRIPT_LIBS], [test x$build_script_libs = xyes])
+if test x$build_script_libs = xyes; then
   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libnovoconsensus.pc:libnovoconsensus.pc.in])
+  AC_CONFIG_FILES([libscriptconsensus.pc:libscriptconsensus.pc.in])
 fi
-AC_MSG_RESULT($build_novo_libs)
+AC_MSG_RESULT($build_script_libs)
 
 AC_LANG_POP
 
@@ -974,7 +974,7 @@ fi
 
 AM_CONDITIONAL([ENABLE_ZMQ], [test "x$use_zmq" = "xyes"])
 
-AC_MSG_CHECKING([whether to build test_novo])
+AC_MSG_CHECKING([whether to build test_script])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="yes"
@@ -990,7 +990,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test x$build_novo_utils$build_novo_libs$build_novod$use_bench$use_tests = xnonononono; then
+if test x$build_script_utils$build_script_libs$build_scriptd$use_bench$use_tests = xnonononono; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --enable-bench or --enable-tests])
 fi
 
@@ -1023,9 +1023,9 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
-AC_SUBST(NOVO_DAEMON_NAME)
-AC_SUBST(NOVO_CLI_NAME)
-AC_SUBST(NOVO_TX_NAME)
+AC_SUBST(SCRIPT_DAEMON_NAME)
+AC_SUBST(SCRIPT_CLI_NAME)
+AC_SUBST(SCRIPT_TX_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(COMPAT_LDFLAGS)

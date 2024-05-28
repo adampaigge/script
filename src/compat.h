@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_COMPAT_H
-#define NOVO_COMPAT_H
+#ifndef SCRIPT_COMPAT_H
+#define SCRIPT_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/novo-config.h"
+#include "config/script-config.h"
 #endif
 
 #ifdef WIN32
@@ -91,4 +91,4 @@ bool static inline IsSelectableSocket(SOCKET s) {
 #endif
 }
 
-#endif // NOVO_COMPAT_H
+#endif // SCRIPT_COMPAT_H

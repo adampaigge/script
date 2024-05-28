@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_PRIMITIVES_BLOCK_H
-#define NOVO_PRIMITIVES_BLOCK_H
+#ifndef SCRIPT_PRIMITIVES_BLOCK_H
+#define SCRIPT_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -156,4 +156,4 @@ struct CBlockLocator
 };
 
 
-#endif // NOVO_PRIMITIVES_BLOCK_H
+#endif // SCRIPT_PRIMITIVES_BLOCK_H

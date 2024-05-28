@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_BLOCK_ENCODINGS_H
-#define NOVO_BLOCK_ENCODINGS_H
+#ifndef SCRIPT_BLOCK_ENCODINGS_H
+#define SCRIPT_BLOCK_ENCODINGS_H
 
 #include "primitives/block.h"
 

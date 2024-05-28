@@ -70,7 +70,7 @@ class BumpFeeTest(BitcoinTestFramework):
         test_rebumping(rbf_node, dest_address)
         test_rebumping_not_replaceable(rbf_node, dest_address)
         test_unconfirmed_not_spendable(rbf_node, rbf_node_address)
-        test_novo_wallet_minchange(rbf_node, dest_address)
+        test_script_wallet_minchange(rbf_node, dest_address)
         test_locked_wallet_fails(rbf_node, dest_address)
         print("Success")
 
@@ -195,7 +195,7 @@ def test_dust_to_fee(rbf_node, dest_address):
 
 
 def test_settxfee(rbf_node, dest_address):
-    # Novo: Increment is fixed, so this test tests for settxfee not making a difference
+    # Script: Increment is fixed, so this test tests for settxfee not making a difference
     # check that bumpfee reacts correctly to the use of settxfee (paytxfee)
     # increase feerate by 2.5x, test that fee increased at least 2x
     rbf_node.settxfee(Decimal("2.00000000"))
@@ -277,7 +277,7 @@ def test_locked_wallet_fails(rbf_node, dest_address):
     assert_raises_jsonrpc(-13, "Please enter the wallet passphrase with walletpassphrase first.",
                           rbf_node.bumpfee, rbfid)
 
-def test_novo_wallet_minchange(rbf_node, dest_address):
+def test_script_wallet_minchange(rbf_node, dest_address):
     input = Decimal("10.00000000")
     discard_threshold = Decimal("1.00000000")    # DEFAULT_DISCARD_THRESHOLD
     min_fee = Decimal("0.01000000")              # DEFAULT_TRANSACTION_FEE

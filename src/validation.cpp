@@ -12,7 +12,7 @@
 #include "consensus/consensus.h"
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
-#include "novo-fees.h"
+#include "script-fees.h"
 #include "hash.h"
 #include "init.h"
 #include "policy/fees.h"
@@ -49,7 +49,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Novo cannot be compiled without assertions."
+# error "Script cannot be compiled without assertions."
 #endif
 
 /**
@@ -91,7 +91,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "Novo Signed Message:\n";
+const std::string strMessageMagic = "Script Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -678,7 +678,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         // Continuously rate-limit free (really, very-low-fee) transactions
         // This mitigates 'penny-flooding' -- sending thousands of free transactions just to
         // be annoying or make others' transactions take longer to confirm.
-        if (fLimitFree && nModifiedFees < GetNovoMinRelayFee(tx, nSize, !fLimitFree))
+        if (fLimitFree && nModifiedFees < GetScriptMinRelayFee(tx, nSize, !fLimitFree))
         {
             static CCriticalSection csFreeLimiter;
             static double dFreeCount;
@@ -888,7 +888,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         // Remove conflicting transactions from the mempool
         BOOST_FOREACH(const CTxMemPool::txiter it, allConflicting)
         {
-            LogPrint("mempool", "replacing tx %s with %s for %s NOVO additional fees, %d delta bytes\n",
+            LogPrint("mempool", "replacing tx %s with %s for %s SCRIPT additional fees, %d delta bytes\n",
                     it->GetTx().GetHash().ToString(),
                     hash.ToString(),
                     FormatMoney(nModifiedFees - nConflictingFees),
@@ -1302,7 +1302,7 @@ namespace Consensus {
 
             // If prev is coinbase, check that it's matured
             if (coins->IsCoinBase()) {
-                // Novo: Switch maturity at depth 145,000
+                // Script: Switch maturity at depth 145,000
                 int nCoinbaseMaturity = params.GetConsensus().nCoinbaseMaturity;
                 if (nSpendHeight - coins->nHeight < nCoinbaseMaturity)
                     return state.Invalid(false,
@@ -1837,7 +1837,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("novo-scriptch");
+    RenameThread("script-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -3077,7 +3077,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 
     // Reject outdated version blocks when 95% (75% on testnet) of the network has upgraded:
     // check for version 2, 3 and 4 upgrades
-    // Novo: Version 2 enforcement was never used
+    // Script: Version 2 enforcement was never used
     if((block.nVersion < 3 && nHeight >= consensusParams.BIP66Height) ||
        (block.nVersion < 4))
             return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),

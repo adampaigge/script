@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_MERKLEBLOCK_H
-#define NOVO_MERKLEBLOCK_H
+#ifndef SCRIPT_MERKLEBLOCK_H
+#define SCRIPT_MERKLEBLOCK_H
 
 #include "serialize.h"
 #include "uint256.h"
@@ -154,4 +154,4 @@ public:
     }
 };
 
-#endif // NOVO_MERKLEBLOCK_H
+#endif // SCRIPT_MERKLEBLOCK_H

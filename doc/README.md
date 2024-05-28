@@ -1,31 +1,31 @@
-Novo
+Script
 =====================
 Setup
 ---------------------
-Novo is an implementation of a node for the Novo network and is one of the pieces of software that provide
-the backbone of the network. It downloads and stores the entire history of Novo transactions; depending on the speed
+Script is an implementation of a node for the Script network and is one of the pieces of software that provide
+the backbone of the network. It downloads and stores the entire history of Script transactions; depending on the speed
 of your computer and network connection, the synchronization process can take anywhere from a few minutes to a hour or more.
 
-To download Novo, visit [novo.org](https://novonode.org/).
+To download Script, visit [script.org](https://scriptnode.org/).
 
 Running
 ---------------------
-Novo is only supported on the Linux and docker platforms at this time.
+Script is only supported on the Linux and docker platforms at this time.
 
-To run Novo on Linux:
+To run Script on Linux:
 
 * unpack the files into a directory
-* run `bin/novod`
+* run `bin/scriptd`
 
 ### Need Help?
 
-* Log an issue on [GitHub] (https://github.com/novochain/novo/issues)
-* Ask for help on the [Novo Forum](https://novoforum.net/).
-* Consult [Novo Wiki](https://wiki.novonode.org/) for information about Novo protocol.
+* Log an issue on [GitHub] (https://github.com/scriptchain/script/issues)
+* Ask for help on the [Script Forum](https://scriptforum.net/).
+* Consult [Script Wiki](https://wiki.scriptnode.org/) for information about Script protocol.
 
 Building
 ---------------------
-The following are developer notes on how to build Novo. They are not complete guides, but include notes on the
+The following are developer notes on how to build Script. They are not complete guides, but include notes on the
 necessary libraries, compile flags, etc.
 
 - [Unix Build Notes](build-unix.md)
@@ -33,7 +33,7 @@ necessary libraries, compile flags, etc.
 
 Development
 ---------------------
-The Novo repo's [root README](/README.md) contains relevant information on the development process and automated
+The Script repo's [root README](/README.md) contains relevant information on the development process and automated
 testing.
 
 - [Developer Notes](developer-notes.md)

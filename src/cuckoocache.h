@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _NOVO_CUCKOOCACHE_H_
-#define _NOVO_CUCKOOCACHE_H_
+#ifndef _SCRIPT_CUCKOOCACHE_H_
+#define _SCRIPT_CUCKOOCACHE_H_
 
 #include <array>
 #include <algorithm>

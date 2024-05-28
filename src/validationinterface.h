@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_VALIDATIONINTERFACE_H
-#define NOVO_VALIDATIONINTERFACE_H
+#ifndef SCRIPT_VALIDATIONINTERFACE_H
+#define SCRIPT_VALIDATIONINTERFACE_H
 
 #include <boost/signals2/signal.hpp>
 #include <boost/shared_ptr.hpp>
@@ -83,4 +83,4 @@ struct CMainSignals {
 
 CMainSignals& GetMainSignals();
 
-#endif // NOVO_VALIDATIONINTERFACE_H
+#endif // SCRIPT_VALIDATIONINTERFACE_H

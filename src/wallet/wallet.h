@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOVO_WALLET_WALLET_H
-#define NOVO_WALLET_WALLET_H
+#ifndef SCRIPT_WALLET_WALLET_H
+#define SCRIPT_WALLET_WALLET_H
 
 #include "amount.h"
-#include "novo-fees.h"
+#include "script-fees.h"
 #include "streams.h"
 #include "tinyformat.h"
 #include "ui_interface.h"
@@ -60,7 +60,7 @@ static const CAmount DEFAULT_DISCARD_THRESHOLD = 5 * COIN;
 
 //! minimum recommended increment for BIP 125 replacement txs
 /*
- * Novo: Scaled to 1/10th of the recommended transaction fee to make RBF
+ * Script: Scaled to 1/10th of the recommended transaction fee to make RBF
  * cheaper than CPFP. This reduces onchain pollution by encouraging transactions
  * to be replaced in the mempool, rather than be respent by another transaction
  * which then both would have to be mined, taking up block space and increasing
@@ -69,7 +69,7 @@ static const CAmount DEFAULT_DISCARD_THRESHOLD = 5 * COIN;
  */
 static const CAmount WALLET_INCREMENTAL_RELAY_FEE = RECOMMENDED_MIN_TX_FEE / 10;
 /*
- * Novo: Creating change outputs at exactly the dustlimit is counter-
+ * Script: Creating change outputs at exactly the dustlimit is counter-
  * productive because it leaves no space to bump the fee up, so we make the
  * minimum change higher than the discard threshold.
  *
@@ -306,7 +306,7 @@ public:
     unsigned int nTimeSmart;
     /**
      * From me flag is set to 1 for transactions that were created by the wallet
-     * on this novo node, and set to 0 for transactions that were created
+     * on this script node, and set to 0 for transactions that were created
      * externally and came in through the network or sendrawtransaction RPC.
      */
     char fFromMe;
@@ -897,13 +897,13 @@ public:
      */
     static CAmount GetMinimumFee(const CMutableTransaction& tx, unsigned int nTxBytes, unsigned int nConfirmTarget, const CTxMemPool& pool, CAmount targetFee);
     /**
-     * Novo: Get a fee targetting a specific transaction speed.
+     * Script: Get a fee targetting a specific transaction speed.
      */
-    CAmount GetNovoPriorityFee(const CMutableTransaction& tx, unsigned int nTxBytes, FeeRatePreset nSpeed);
+    CAmount GetScriptPriorityFee(const CMutableTransaction& tx, unsigned int nTxBytes, FeeRatePreset nSpeed);
     /**
-     * Novo: Get a fee targetting a specific transaction speed.
+     * Script: Get a fee targetting a specific transaction speed.
      */
-    static CAmount GetNovoPriorityFee(const CMutableTransaction& tx, unsigned int nTxBytes, FeeRatePreset nSpeed, CAmount targetFee);
+    static CAmount GetScriptPriorityFee(const CMutableTransaction& tx, unsigned int nTxBytes, FeeRatePreset nSpeed, CAmount targetFee);
     /**
      * Return the minimum required fee taking into account the
      * floating relay fee and user set minimum transaction fee
@@ -911,7 +911,7 @@ public:
     static CAmount GetRequiredFee(const CMutableTransaction& tx, unsigned int nTxBytes);
     /**
      * Return the minimum required fee taking into account the
-     * floating relay fee and user set minimum transaction fee, but not the Novo dust fee.
+     * floating relay fee and user set minimum transaction fee, but not the Script dust fee.
      */
     static CAmount GetRequiredFee(unsigned int nTxBytes);
 
@@ -1152,4 +1152,4 @@ bool CWallet::DummySignTx(CMutableTransaction &txNew, const ContainerType &coins
     }
     return true;
 }
-#endif // NOVO_WALLET_WALLET_H
+#endif // SCRIPT_WALLET_WALLET_H
